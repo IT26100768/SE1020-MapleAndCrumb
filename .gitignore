@@ -1,0 +1,59 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Java & Tomcat Runtime ###
+*.class
+*.log
+*.war
+*.jar
+*.ear
+hs_err_pid*
+replay_pid*
+
+### Windows OS ###
+Thumbs.db
+desktop.ini
+
+### Project Specific (Maple & Crumb) ###
+# Ignore generated report files, but keep the folders (using .gitkeep)
+data_files/exports/*
+!data_files/exports/.gitkeep
+data_files/imports/*
+!data_files/imports/.gitkeep
