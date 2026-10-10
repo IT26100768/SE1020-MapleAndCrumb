@@ -12,7 +12,7 @@ public class StandardPastry extends Product {
     public boolean isContainsNuts() {
         return containsNuts; }
 
-    // POLYMORPHISM: Specific display method for Pastries (includes allergen warning)
+
     @Override
     public String getDisplayDescription() {
         String nutWarning = containsNuts ? " (Contains Nuts)" : " (Nut-Free)";

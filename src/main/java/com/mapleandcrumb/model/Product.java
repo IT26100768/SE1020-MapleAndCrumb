@@ -3,7 +3,7 @@ package com.mapleandcrumb.model;
 public class Product {
     private String productId;
     private String name;
-    private String category; // e.g., "Cake", "Pastry", "Bread"
+    private String category;
     private double price;
     private int stockQuantity;
 
@@ -16,7 +16,7 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    // Getters and Setters (Encapsulation)
+
     public String getProductId() {
         return productId; }
     public String getName() {
@@ -34,7 +34,7 @@ public class Product {
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity; }
 
-// ABSTRACTION & POLYMORPHISM: Different products display their details
+
     differently.
     public abstract String getDisplayDescription();
 }

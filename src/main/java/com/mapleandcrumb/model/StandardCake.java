@@ -16,7 +16,7 @@ public class StandardCake extends Product {
     public int getSizeInches() {
         return sizeInches; }
 
-    // POLYMORPHISM: Specific display method for Cakes
+
     @Override
     public String getDisplayDescription() {
         return getSizeInches() + "-inch " + getFlavor() + " Cake - $" + getPrice();
