@@ -4,13 +4,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-// ABSTRACTION: Base class for orders.
 public abstract class Order {
     private String orderId;
     private String customerId;
     private LocalDateTime orderDate;
     private String status;
-    protected List<OrderItem> items; // PROTECTED: Allows child classes to access directly if needed
+    protected List<OrderItem> items;
 
     public Order(String orderId, String customerId) {
         this.orderId = orderId;
@@ -20,14 +19,29 @@ public abstract class Order {
         this.items = new ArrayList<>();
     }
 
-    public void addItem(OrderItem item) { this.items.add(item); }
+    public void addItem(OrderItem item) {
+        this.items.add(item);
+    }
 
-    public String getOrderId() { return orderId; }
-    public String getCustomerId() { return customerId; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-    public List<OrderItem> getItems() { return items; }
+    public String getOrderId() {
+        return orderId;
+    }
 
-    // ABSTRACTION & POLYMORPHISM: Child classes must calculate totals differently.
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
     public abstract double calculateFinalTotal();
 }

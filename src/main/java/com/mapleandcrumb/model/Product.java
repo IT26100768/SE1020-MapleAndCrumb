@@ -1,6 +1,6 @@
 package com.mapleandcrumb.model;
 
-public class Product {
+public abstract class Product {
     private String productId;
     private String name;
     private String category;
@@ -16,26 +16,38 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-
     public String getProductId() {
-        return productId; }
+        return productId;
+    }
+
     public String getName() {
-        return name; }
+        return name;
+    }
+
     public void setName(String name) {
-        this.name = name; }
+        this.name = name;
+    }
+
     public String getCategory() {
-        return category; }
+        return category;
+    }
+
     public double getPrice() {
-        return price; }
+        return price;
+    }
+
     public void setPrice(double price) {
-        this.price = price; }
+        this.price = price;
+    }
+
     public int getStockQuantity() {
-        return stockQuantity; }
+        return stockQuantity;
+    }
+
     public void setStockQuantity(int stockQuantity) {
-        this.stockQuantity = stockQuantity; }
+        this.stockQuantity = stockQuantity;
+    }
 
-
-    differently.
     public abstract String getDisplayDescription();
 }
 

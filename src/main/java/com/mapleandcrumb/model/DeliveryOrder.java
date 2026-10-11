@@ -1,6 +1,5 @@
 package com.mapleandcrumb.model;
 
-// INHERITANCE
 public class DeliveryOrder extends Order {
     private String deliveryAddress;
     private static final double DELIVERY_FEE = 5.00;
@@ -10,9 +9,10 @@ public class DeliveryOrder extends Order {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public String getDeliveryAddress() { return deliveryAddress; }
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
 
-    // POLYMORPHISM: Delivery orders add a flat delivery fee to the total.
     @Override
     public double calculateFinalTotal() {
         double total = 0;

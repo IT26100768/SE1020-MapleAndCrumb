@@ -1,6 +1,5 @@
 package com.mapleandcrumb.model;
 
-// Helper class for Cart Items
 public class OrderItem {
     private String productId;
     private String productName;
@@ -14,9 +13,23 @@ public class OrderItem {
         this.unitPrice = unitPrice;
     }
 
-    public double getSubtotal() { return quantity * unitPrice; }
-    public String getProductId() { return productId; }
-    public String getProductName() { return productName; }
-    public int getQuantity() { return quantity; }
-    public double getUnitPrice() { return unitPrice; }
+    public double getSubtotal() {
+        return quantity * unitPrice;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
 }
