@@ -10,13 +10,13 @@ public abstract class User {
     private String phone;
     private LocalDateTime registrationDate;
 
-    public User(String userID, String userName, String password, String email, String phone, LocalDateTime registrationDate) {
+    public User(String userID, String userName, String password, String email, String phone) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.registrationDate = registrationDate;
+        this.registrationDate = LocalDateTime.now();
     }
 
     public String getUserID() {
