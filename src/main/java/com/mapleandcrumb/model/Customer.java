@@ -1,7 +1,5 @@
 package com.mapleandcrumb.model;
 
-import java.time.LocalDateTime;
-
 public class Customer extends User {
 
     private String deliveryAddress;
