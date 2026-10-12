@@ -7,8 +7,8 @@ public class Customer extends User {
     private String deliveryAddress;
     private int loyaltyPoints;
 
-    public Customer(String userID, String userName, String password, String email, String phone, LocalDateTime registrationDate, String deliveryAddress) {
-        super(userID, userName, password, email, phone, registrationDate);
+    public Customer(String userID, String userName, String password, String email, String phone, String deliveryAddress) {
+        super(userID, userName, password, email, phone);
         this.deliveryAddress = deliveryAddress;
         this.loyaltyPoints = 0;
     }
