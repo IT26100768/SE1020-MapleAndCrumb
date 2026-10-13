@@ -1,11 +1,14 @@
 package com.mapleandcrumb.dao.impl;
+
 import com.mapleandcrumb.dao.ProductDAO;
 import com.mapleandcrumb.model.Product;
 import com.mapleandcrumb.model.StandardCake;
 import com.mapleandcrumb.model.StandardPastry;
 import com.mapleandcrumb.util.FileUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class ProductDAOImpl implements ProductDAO {
     private static final String FILE_NAME = "products.txt";
 
@@ -26,7 +29,6 @@ public class ProductDAOImpl implements ProductDAO {
         FileUtil.appendToFile(FILE_NAME, line);
     }
 
-
     @Override
     public Product getProductById(String productId) {
         List<String> lines = FileUtil.readFromFile(FILE_NAME);
@@ -38,6 +40,7 @@ public class ProductDAOImpl implements ProductDAO {
         }
         return null;
     }
+
     @Override
     public List<Product> searchByCategory(String category) {
         List<Product> results = new ArrayList<>();
@@ -50,6 +53,7 @@ public class ProductDAOImpl implements ProductDAO {
         }
         return results;
     }
+
     @Override
     public List<Product> searchByName(String name) {
         List<Product> results = new ArrayList<>();
@@ -61,6 +65,7 @@ public class ProductDAOImpl implements ProductDAO {
         }
         return results;
     }
+
     @Override
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();

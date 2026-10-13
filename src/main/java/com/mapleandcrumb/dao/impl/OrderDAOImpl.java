@@ -1,14 +1,17 @@
 package com.mapleandcrumb.dao.impl;
 
 import com.mapleandcrumb.dao.OrderDAO;
-import com.mapleandcrumb.model.*;
+import com.mapleandcrumb.model.DeliveryOrder;
+import com.mapleandcrumb.model.Order;
+import com.mapleandcrumb.model.OrderItem;
+import com.mapleandcrumb.model.PickupOrder;
 import com.mapleandcrumb.util.FileUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDAOImpl implements OrderDAO {
     private static final String FILE_NAME = "orders.txt";
-
 
     @Override
     public void createOrder(Order order) {
@@ -51,7 +54,7 @@ public class OrderDAOImpl implements OrderDAO {
     public List<Order> getAllOrders() {
         List<Order> list = new ArrayList<>();
         for (String line : FileUtil.readFromFile(FILE_NAME)) {
-            if(!line.trim().isEmpty()) list.add(mapLineToOrder(line.split(",", 6)));
+            if (!line.trim().isEmpty()) list.add(mapLineToOrder(line.split(",", 6)));
         }
         return list;
     }
@@ -81,7 +84,6 @@ public class OrderDAOImpl implements OrderDAO {
         FileUtil.writeToFile(FILE_NAME, updated);
     }
 
-
     private Order mapLineToOrder(String[] d) {
         Order order;
         if (d[3].equals("Delivery")) {
@@ -91,11 +93,10 @@ public class OrderDAOImpl implements OrderDAO {
         }
         order.setStatus(d[2]);
 
-
         if (d.length > 5 && !d[5].isEmpty()) {
             String[] itemsArray = d[5].split(";");
             for (String itemStr : itemsArray) {
-                if(!itemStr.isEmpty()) {
+                if (!itemStr.isEmpty()) {
                     String[] itemData = itemStr.split(":");
                     order.addItem(new OrderItem(itemData[0], itemData[1], Integer.parseInt(itemData[2]), Double.parseDouble(itemData[3])));
                 }
