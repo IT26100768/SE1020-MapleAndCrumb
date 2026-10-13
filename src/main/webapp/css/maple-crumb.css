@@ -1,0 +1,205 @@
+:root {
+    --espresso-brown: #3E2723;      /* Main text color */
+    --espresso-light: #5D4037;      /* Secondary text */
+    --brick-red: #B22222;           /* Primary buttons */
+    --brick-red-hover: #8B1A1A;     /* Button hover */
+    --cream: #FFF8E7;               /* Background */
+    --warm-beige: #F5E6D3;          /* Card backgrounds */
+    --soft-brown: #8D6E63;          /* Borders */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', 'Segoe UI', serif;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--espresso-brown);
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: var(--espresso-brown);
+    color: var(--cream);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(62, 39, 35, 0.2);
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.navbar .logo span {
+    color: var(--brick-red);
+}
+
+.navbar nav a {
+    color: var(--cream);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--brick-red);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.page-title {
+    color: var(--espresso-brown);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--brick-red);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.card {
+    background-color: var(--warm-beige);
+    border: 1px solid var(--soft-brown);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px rgba(62, 39, 35, 0.1);
+}
+
+.card h3 {
+    color: var(--espresso-brown);
+    margin-bottom: 0.8rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--espresso-brown);
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--soft-brown);
+    border-radius: 4px;
+    background-color: var(--cream);
+    color: var(--espresso-brown);
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--brick-red);
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--brick-red);
+    color: var(--cream);
+}
+
+.btn-primary:hover {
+    background-color: var(--brick-red-hover);
+}
+
+.btn-secondary {
+    background-color: var(--espresso-brown);
+    color: var(--cream);
+}
+
+.btn-secondary:hover {
+    background-color: var(--espresso-light);
+}
+
+.btn-danger {
+    background-color: #8B0000;
+    color: var(--cream);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--warm-beige);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+table thead {
+    background-color: var(--espresso-brown);
+    color: var(--cream);
+}
+
+table th, table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--soft-brown);
+}
+
+table tbody tr:hover {
+    background-color: var(--cream);
+}
+
+.alert {
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid #2E7D32;
+}
+
+.alert-error {
+    background-color: #FFEBEE;
+    color: var(--brick-red);
+    border: 1px solid var(--brick-red);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.footer {
+    background-color: var(--espresso-brown);
+    color: var(--cream);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
