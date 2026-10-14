@@ -12,11 +12,11 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String FILE_NAME = "users.txt";
 
-    //CREATE
+    // CREATE
     @Override
     public void registerUser(User user) {
 
-        String line = user.getUserID() + "," + user.getUserName() + "," + user.getPassword() + ","
+        String line = user.getUserID() + "," + user.getUsername() + "," + user.getPassword() + ","
                 + user.getEmail() + "," + user.getPhone();
 
         if (user instanceof Customer) {
@@ -27,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
         FileUtil.appendToFile(FILE_NAME, line);
     }
 
-    //READ
+    // READ
     @Override
     public User searchUserByEmail(String email) {
 
@@ -72,14 +72,14 @@ public class UserDAOImpl implements UserDAO {
         return users;
     }
 
-    //UPDATE
+    // UPDATE
     @Override
     public void updateUser(User user) {
         deleteUser(user.getUserID());
         registerUser(user);
     }
 
-    //DELETE
+    // DELETE
     @Override
     public void deleteUser(String userId) {
 
