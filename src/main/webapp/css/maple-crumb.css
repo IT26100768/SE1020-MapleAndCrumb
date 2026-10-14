@@ -1,205 +1,511 @@
+/* ==========================================================================
+   Maple & Crumb Bakery - Modern Artisanal Bootstrap Design System
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
-    --espresso-brown: #3E2723;      /* Main text color */
-    --espresso-light: #5D4037;      /* Secondary text */
-    --brick-red: #B22222;           /* Primary buttons */
-    --brick-red-hover: #8B1A1A;     /* Button hover */
-    --cream: #FFF8E7;               /* Background */
-    --warm-beige: #F5E6D3;          /* Card backgrounds */
-    --soft-brown: #8D6E63;          /* Borders */
+    /* Legacy variables preserved for backwards compatibility */
+    --espresso-brown: #2D1B16;
+    --espresso-light: #5A3E36;
+    --brick-red: #A93226;
+    --brick-red-hover: #8B1A1A;
+    --cream: #FAF6F0;
+    --warm-beige: #F5ECE1;
+    --soft-brown: #8D6E63;
+
+    /* Modern Design System Tokens */
+    --mc-primary: #A93226;
+    --mc-primary-hover: #8B1A1A;
+    --mc-primary-subtle: #FBEAE8;
+    --mc-espresso: #2D1B16;
+    --mc-espresso-soft: #4A332C;
+    --mc-cream: #FAF6F0;
+    --mc-warm-card: #FFFFFF;
+    --mc-gold: #D4A373;
+    --mc-gold-light: #FAEDCD;
+    --mc-muted: #6E5D53;
+    --mc-border: #E8DDD2;
+    --mc-shadow-sm: 0 2px 8px rgba(45, 27, 22, 0.05);
+    --mc-shadow-md: 0 8px 24px rgba(45, 27, 22, 0.08);
+    --mc-shadow-lg: 0 16px 40px rgba(45, 27, 22, 0.12);
+    --mc-radius: 12px;
 }
 
+/* Base Reset & Typography */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: 'Georgia', 'Segoe UI', serif;
 }
 
 body {
-    background-color: var(--cream);
-    color: var(--espresso-brown);
-    line-height: 1.6;
-}
-
-.navbar {
-    background-color: var(--espresso-brown);
-    color: var(--cream);
-    padding: 1rem 2rem;
+    background-color: var(--mc-cream);
+    color: var(--mc-espresso);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-size: 0.975rem;
+    line-height: 1.65;
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(62, 39, 35, 0.2);
+    flex-direction: column;
 }
 
-.navbar .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--cream);
+h1, h2, h3, h4, h5, h6, .font-playfair, .navbar-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--mc-primary);
     text-decoration: none;
-    letter-spacing: 1px;
+    transition: all 0.25s ease;
 }
 
-.navbar .logo span {
-    color: var(--brick-red);
+a:hover {
+    color: var(--mc-primary-hover);
 }
 
-.navbar nav a {
-    color: var(--cream);
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-size: 1rem;
-    transition: color 0.3s;
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.maple-navbar {
+    background: rgba(45, 27, 22, 0.97) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 0.85rem 0;
+    z-index: 1030;
 }
 
-.navbar nav a:hover {
-    color: var(--brick-red);
+.maple-navbar .navbar-brand {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #FFFDF9 !important;
+    letter-spacing: 0.5px;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
+.maple-navbar .brand-icon {
+    font-size: 1.5rem;
+    line-height: 1;
 }
 
+.maple-navbar .brand-amp {
+    color: var(--mc-gold);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.maple-navbar .nav-link {
+    color: rgba(255, 253, 249, 0.82) !important;
+    font-size: 0.925rem;
+    font-weight: 500;
+    padding: 0.5rem 0.85rem !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.maple-navbar .nav-link:hover,
+.maple-navbar .nav-link:focus,
+.maple-navbar .nav-link.active {
+    color: #FFFDF9 !important;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.maple-navbar .nav-profile-link {
+    color: var(--mc-gold) !important;
+    font-weight: 600;
+}
+
+.maple-navbar .nav-profile-link:hover {
+    color: #FFFDF9 !important;
+    background-color: rgba(212, 163, 115, 0.18) !important;
+}
+
+.btn-outline-maple-nav {
+    color: #FFFDF9;
+    border: 1px solid rgba(255, 253, 249, 0.35);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-outline-maple-nav:hover {
+    background-color: var(--mc-primary);
+    border-color: var(--mc-primary);
+    color: #FFFDF9;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.25);
+    padding: 0.35rem 0.6rem;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 248, 231, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ==========================================================================
+   Page Containers & Headings
+   ========================================================================== */
 .page-title {
-    color: var(--espresso-brown);
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 3px solid var(--brick-red);
-    padding-bottom: 0.5rem;
+    color: var(--mc-espresso);
+    font-size: 2.15rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    position: relative;
     display: inline-block;
+    padding-bottom: 0.4rem;
 }
 
-.card {
-    background-color: var(--warm-beige);
-    border: 1px solid var(--soft-brown);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 6px rgba(62, 39, 35, 0.1);
+.page-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--mc-primary);
+    border-radius: 2px;
 }
 
-.card h3 {
-    color: var(--espresso-brown);
-    margin-bottom: 0.8rem;
+.page-subtitle {
+    color: var(--mc-muted);
+    font-size: 1rem;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
 }
 
+/* ==========================================================================
+   Modern Cards & Auth Containers
+   ========================================================================== */
+.card-maple, .card {
+    background-color: var(--mc-warm-card);
+    border: 1px solid var(--mc-border);
+    border-radius: var(--mc-radius);
+    padding: 2rem;
+    box-shadow: var(--mc-shadow-md);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-maple-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.card-maple-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--mc-gold-light);
+    color: var(--mc-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Form Controls & Inputs
+   ========================================================================== */
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
-.form-group label {
+.form-label, .form-group label {
     display: block;
-    color: var(--espresso-brown);
-    font-weight: bold;
-    margin-bottom: 0.3rem;
+    color: var(--mc-espresso);
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.45rem;
+    letter-spacing: 0.2px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid var(--soft-brown);
-    border-radius: 4px;
-    background-color: var(--cream);
-    color: var(--espresso-brown);
-    font-size: 1rem;
+.form-control, .form-group input, .form-group textarea, .form-group select {
+    background-color: #FFFDF9;
+    border: 1.5px solid var(--mc-border);
+    border-radius: 10px;
+    padding: 0.7rem 0.95rem;
+    color: var(--mc-espresso);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-control:focus, .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--mc-primary);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 0.22rem rgba(169, 50, 38, 0.15);
     outline: none;
-    border-color: var(--brick-red);
 }
 
+.form-control[readonly], .form-group input[readonly] {
+    background-color: #F7F3EE !important;
+    border-color: #E2D7CC !important;
+    color: #6C584C !important;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 .btn {
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    border-radius: 10px;
+    padding: 0.68rem 1.6rem;
+    transition: all 0.25s ease;
 }
 
-.btn-primary {
-    background-color: var(--brick-red);
-    color: var(--cream);
+.btn-primary, .btn-maple-primary {
+    background-color: var(--mc-primary);
+    border-color: var(--mc-primary);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(169, 50, 38, 0.25);
 }
 
-.btn-primary:hover {
-    background-color: var(--brick-red-hover);
+.btn-primary:hover, .btn-primary:focus, .btn-maple-primary:hover {
+    background-color: var(--mc-primary-hover);
+    border-color: var(--mc-primary-hover);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(169, 50, 38, 0.35);
 }
 
-.btn-secondary {
-    background-color: var(--espresso-brown);
-    color: var(--cream);
+.btn-secondary, .btn-maple-secondary {
+    background-color: var(--mc-espresso);
+    border-color: var(--mc-espresso);
+    color: #FFFDF9;
 }
 
-.btn-secondary:hover {
-    background-color: var(--espresso-light);
+.btn-secondary:hover, .btn-maple-secondary:hover {
+    background-color: var(--mc-espresso-soft);
+    border-color: var(--mc-espresso-soft);
+    color: #FFFDF9;
+    transform: translateY(-2px);
 }
 
-.btn-danger {
-    background-color: #8B0000;
-    color: var(--cream);
+.btn-outline-maple {
+    color: var(--mc-espresso);
+    border: 1.5px solid var(--mc-espresso);
+    background: transparent;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--warm-beige);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
+.btn-outline-maple:hover {
+    background-color: var(--mc-espresso);
+    color: #FFFDF9;
+    transform: translateY(-2px);
 }
 
-table thead {
-    background-color: var(--espresso-brown);
-    color: var(--cream);
-}
-
-table th, table td {
-    padding: 0.8rem;
-    text-align: left;
-    border-bottom: 1px solid var(--soft-brown);
-}
-
-table tbody tr:hover {
-    background-color: var(--cream);
-}
-
+/* ==========================================================================
+   Alerts
+   ========================================================================== */
 .alert {
-    padding: 0.8rem 1rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 0.95rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--mc-shadow-sm);
 }
 
 .alert-success {
-    background-color: #E8F5E9;
-    color: #2E7D32;
-    border: 1px solid #2E7D32;
+    background-color: #EBF8EE;
+    color: #1E6635;
+    border-left: 4px solid #28A745;
 }
 
-.alert-error {
-    background-color: #FFEBEE;
-    color: var(--brick-red);
-    border: 1px solid var(--brick-red);
+.alert-error, .alert-danger {
+    background-color: #FDF1F0;
+    color: #A93226;
+    border-left: 4px solid #A93226;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+/* ==========================================================================
+   Hero Section (Landing Page)
+   ========================================================================== */
+.hero-maple {
+    background: linear-gradient(135deg, rgba(45, 27, 22, 0.96) 0%, rgba(139, 26, 26, 0.92) 100%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23D4A373' fill-opacity='0.05'%3E%3Ccircle cx='25' cy='25' r='6'/%3E%3Ccircle cx='75' cy='75' r='10'/%3E%3Cpath d='M50 20 L55 35 L45 35 Z'/%3E%3C/g%3E%3C/svg%3E");
+    color: #FFFDF9;
+    border-radius: 20px;
+    padding: 5rem 2.5rem;
+    margin-bottom: 3.5rem;
+    box-shadow: 0 16px 45px rgba(45, 27, 22, 0.22);
+    position: relative;
+    overflow: hidden;
 }
 
-.footer {
-    background-color: var(--espresso-brown);
-    color: var(--cream);
+.hero-maple h1 {
+    font-size: 3.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-maple h1 span {
+    color: var(--mc-gold);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.hero-maple .tagline {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: rgba(255, 253, 249, 0.9);
+    max-width: 650px;
+    margin: 0 auto 2.25rem auto;
+}
+
+.hero-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    color: var(--mc-gold-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   Feature Cards
+   ========================================================================== */
+.feature-card-modern {
+    background: #FFFFFF;
+    border: 1px solid var(--mc-border);
+    border-radius: 14px;
+    padding: 2.2rem 1.6rem;
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 3rem;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--mc-shadow-sm);
+    cursor: pointer;
+    position: relative;
+}
+
+.feature-card-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--mc-shadow-md);
+    border-color: var(--mc-gold);
+}
+
+.feature-icon-wrapper {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.25rem auto;
+    background: var(--mc-cream);
+    border: 1px solid var(--mc-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.25rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card-modern:hover .feature-icon-wrapper {
+    transform: scale(1.1) rotate(4deg);
+    background: var(--mc-gold-light);
+}
+
+.feature-card-modern h3 {
+    font-size: 1.35rem;
+    color: var(--mc-espresso);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.feature-card-modern p {
+    color: var(--mc-muted);
+    font-size: 0.93rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ==========================================================================
+   Testimonials
+   ========================================================================== */
+.testimonial-card-modern {
+    background: #FFFFFF;
+    border: 1px solid var(--mc-border);
+    border-radius: 14px;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--mc-shadow-sm);
+    border-top: 4px solid var(--mc-primary);
+}
+
+.testimonial-card-modern .stars {
+    color: #F5A623;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.testimonial-card-modern p {
+    color: var(--mc-espresso-soft);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+.testimonial-card-modern .author {
+    font-weight: 700;
+    color: var(--mc-espresso);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.maple-footer {
+    background-color: var(--mc-espresso);
+    color: rgba(255, 253, 249, 0.85);
+    border-top: 3px solid var(--mc-gold);
+    margin-top: auto;
+}
+
+.maple-footer .footer-link {
+    color: rgba(255, 253, 249, 0.75);
+    transition: color 0.2s ease;
+}
+
+.maple-footer .footer-link:hover {
+    color: var(--mc-gold);
+}
+
+/* ==========================================================================
+   Responsiveness
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-maple {
+        padding: 3.5rem 1.5rem;
+    }
+    .hero-maple h1 {
+        font-size: 2.5rem;
+    }
+    .hero-maple .tagline {
+        font-size: 1.05rem;
+    }
+    .page-title {
+        font-size: 1.75rem;
+    }
 }
