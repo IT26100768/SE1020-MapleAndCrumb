@@ -1,401 +1,261 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Maple & Crumb - Freshly Baked with Love</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maple &amp; Crumb - Freshly Baked with Love</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Maple & Crumb Custom Styling -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css">
-    <style>
-        /* Hero Section with Background Image Effect */
-        .hero {
-            background: linear-gradient(135deg, rgba(62, 39, 35, 0.95), rgba(178, 34, 34, 0.9)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233E2723" width="1200" height="600"/><circle fill="%23B22222" opacity="0.1" cx="200" cy="150" r="100"/><circle fill="%23B22222" opacity="0.1" cx="800" cy="400" r="150"/></svg>');
-            background-size: cover;
-            color: var(--cream);
-            text-align: center;
-            padding: 6rem 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(62, 39, 35, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 248, 231, 0.1) 0%, transparent 70%);
-            animation: pulse 15s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero h1 span {
-            color: var(--warm-beige);
-            font-style: italic;
-        }
-
-        .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .hero .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .hero .btn {
-            font-size: 1.2rem;
-            padding: 1rem 2.5rem;
-            background-color: var(--cream);
-            color: var(--brick-red);
-            font-weight: bold;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            background-color: var(--warm-beige);
-        }
-
-        .hero .btn-secondary {
-            background-color: transparent;
-            color: var(--cream);
-            border: 2px solid var(--cream);
-        }
-
-        .hero .btn-secondary:hover {
-            background-color: var(--cream);
-            color: var(--brick-red);
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Features Section */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--espresso-brown);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--brick-red);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--espresso-light);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            font-style: italic;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .feature-card {
-            background: var(--warm-beige);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.4s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(178, 34, 34, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(62, 39, 35, 0.2);
-            border-color: var(--brick-red);
-        }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .feature-card h3 {
-            color: var(--brick-red);
-            font-size: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .feature-card p {
-            color: var(--espresso-light);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: var(--warm-beige);
-            padding: 4rem 2rem;
-            border-radius: 12px;
-            margin: 3rem 0;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--cream);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--brick-red);
-            box-shadow: 0 4px 15px rgba(62, 39, 35, 0.1);
-        }
-
-        .testimonial-card .stars {
-            color: #FFD700;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-card p {
-            font-style: italic;
-            color: var(--espresso-brown);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-card .author {
-            font-weight: bold;
-            color: var(--brick-red);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--espresso-brown), var(--brick-red));
-            color: var(--cream);
-            text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 12px;
-            margin: 3rem 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-section .btn {
-            font-size: 1.2rem;
-            padding: 1rem 3rem;
-            background-color: var(--cream);
-            color: var(--brick-red);
-            font-weight: bold;
-            border-radius: 50px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero .tagline { font-size: 1.2rem; }
-            .section-title { font-size: 2rem; }
-        }
-    </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/includes/navbar.jsp"/>
+    <jsp:include page="/WEB-INF/includes/navbar.jsp" />
 
-<div class="container">
-    <!-- Hero Section -->
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Maple <span>&</span> Crumb</h1>
-            <p class="tagline">"Where every bite tells a story of warmth and tradition"</p>
-            <div class="btn-group">
-                <a href="${pageContext.request.contextPath}/customer/login.jsp" class="btn">🛒 Order Now</a>
-                <a href="${pageContext.request.contextPath}/customer/book_cake.jsp" class="btn btn-secondary">🎂 Custom
-                    Cake</a>
+    <main class="container my-4 my-md-5">
+        <!-- Hero Section -->
+        <section class="hero hero-maple text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="hero-pill-badge mb-3">
+                        <span>✨</span> Artisanal Bakery &amp; Patisserie
+                    </div>
+                    <h1 class="display-3 fw-bold mb-3">
+                        Maple <span>&amp;</span> Crumb
+                    </h1>
+                    <p class="tagline mb-4">
+                        &ldquo;Where every bite tells a story of warmth and tradition&rdquo;
+                    </p>
+                    <div class="btn-group-hero d-flex flex-wrap justify-content-center gap-3">
+                        <a href="${pageContext.request.contextPath}/comp01-user/login.jsp" class="btn btn-primary btn-lg px-4 shadow">
+                            🛒 Order Now
+                        </a>
+                        <a href="${pageContext.request.contextPath}/comp01-user/register.jsp" class="btn btn-outline-light btn-lg px-4">
+                            🎂 Register
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Features Section -->
-    <h2 class="section-title">Why Choose Maple & Crumb?</h2>
-    <p class="section-subtitle">Experience the art of baking with our premium services</p>
+        <!-- Highlights Bar -->
+        <section class="mb-5">
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="p-3 bg-white border rounded-3 shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
+                        <span class="fs-3 mb-1">🌾</span>
+                        <span class="fw-bold small text-dark">100% Organic Flours</span>
+                        <span class="text-muted smaller" style="font-size: 0.8rem;">Stone-milled heritage grain</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="p-3 bg-white border rounded-3 shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
+                        <span class="fs-3 mb-1">⏰</span>
+                        <span class="fw-bold small text-dark">Baked Fresh Daily</span>
+                        <span class="text-muted smaller" style="font-size: 0.8rem;">Every morning at 5:00 AM</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="p-3 bg-white border rounded-3 shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
+                        <span class="fs-3 mb-1">🧈</span>
+                        <span class="fw-bold small text-dark">Pure Creamery Butter</span>
+                        <span class="text-muted smaller" style="font-size: 0.8rem;">Zero artificial additives</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="p-3 bg-white border rounded-3 shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
+                        <span class="fs-3 mb-1">⚡</span>
+                        <span class="fw-bold small text-dark">Fast Warm Delivery</span>
+                        <span class="text-muted smaller" style="font-size: 0.8rem;">Straight to your doorstep</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="features">
-        <div class="feature-card" onclick="window.location.href='${pageContext.request.contextPath}/menu'">
-            <div class="feature-icon">🥐</div>
-            <h3>Fresh Daily Menu</h3>
-            <p>Explore our wide selection of freshly baked cakes, pastries, and breads made with the finest ingredients
-                every morning.</p>
-            <a href="${pageContext.request.contextPath}/menu" class="btn btn-primary">Browse Menu</a>
-        </div>
-
-        <div class="feature-card"
-             onclick="window.location.href='${pageContext.request.contextPath}/customer/book_cake.jsp'">
-            <div class="feature-icon">🎂</div>
-            <h3>Custom Cake Design</h3>
-            <p>Design your dream cake for any occasion. Choose flavors, sizes, and add personalized messages for that
-                perfect touch.</p>
-            <a href="${pageContext.request.contextPath}/customer/book_cake.jsp" class="btn btn-primary">Book Custom
-                Cake</a>
-        </div>
-
-        <div class="feature-card"
-             onclick="window.location.href='${pageContext.request.contextPath}/customer/login.jsp'">
-            <div class="feature-icon">🚚</div>
-            <h3>Fast Delivery</h3>
-            <p>Get your favorite treats delivered straight to your doorstep. Fresh, fast, and reliable service across
-                the city.</p>
-            <a href="${pageContext.request.contextPath}/customer/login.jsp" class="btn btn-primary">Order with
-                Delivery</a>
-        </div>
-
-        <div class="feature-card"
-             onclick="window.location.href='${pageContext.request.contextPath}/customer/promotions.jsp'">
-            <div class="feature-icon">🎁</div>
-            <h3>Exclusive Promotions</h3>
-            <p>Enjoy special discounts and seasonal offers. Join our loyalty program and save on every order!</p>
-            <a href="${pageContext.request.contextPath}/customer/promotions.jsp" class="btn btn-primary">View Offers</a>
-        </div>
-
-        <div class="feature-card"
-             onclick="window.location.href='${pageContext.request.contextPath}/customer/register.jsp'">
-            <div class="feature-icon">⭐</div>
-            <h3>Loyalty Rewards</h3>
-            <p>Earn points with every purchase. Redeem them for free treats, discounts, and exclusive member-only
-                perks.</p>
-            <a href="${pageContext.request.contextPath}/customer/register.jsp" class="btn btn-primary">Join Now</a>
-        </div>
-
-        <div class="feature-card"
-             onclick="window.location.href='${pageContext.request.contextPath}/customer/product_details.jsp'">
-            <div class="feature-icon">💬</div>
-            <h3>Customer Reviews</h3>
-            <p>Read authentic reviews from our happy customers. Share your experience and help others discover their
-                favorites.</p>
-            <a href="${pageContext.request.contextPath}/customer/product_details.jsp" class="btn btn-primary">Read
-                Reviews</a>
-        </div>
-    </div>
-
-    <!-- Testimonials Section -->
-    <div class="testimonials">
-        <h2 class="section-title">What Our Customers Say</h2>
-        <p class="section-subtitle">Real stories from our beloved community</p>
-
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"The custom birthday cake was absolutely stunning! The flavor was incredible and the design exceeded
-                    my expectations. Maple & Crumb made my daughter's special day even more magical!"</p>
-                <div class="author">— Sarah M., Happy Customer</div>
+        <!-- Features Section -->
+        <section class="my-5">
+            <div class="text-center mb-5">
+                <h2 class="page-title text-center">Why Choose Maple &amp; Crumb?</h2>
+                <p class="page-subtitle text-center">Experience the art of baking with our premium artisanal services</p>
             </div>
 
-            <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"I order from Maple & Crumb every week. Their pastries are always fresh, and the delivery is prompt.
-                    The chocolate croissants are to die for!"</p>
-                <div class="author">— James L., Regular Customer</div>
+            <div class="row g-4 features">
+                <!-- Feature 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card feature-card-modern" onclick="window.location.href = '${pageContext.request.contextPath}/menu'">
+                        <div>
+                            <div class="feature-icon feature-icon-wrapper">🥐</div>
+                            <h3>Fresh Daily Menu</h3>
+                            <p>
+                                Explore our wide selection of freshly baked cakes, pastries, and
+                                breads made with the finest ingredients every morning.
+                            </p>
+                        </div>
+                        <a href="${pageContext.request.contextPath}/menu" class="btn btn-primary w-100">
+                            Browse Menu
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card feature-card-modern" onclick="window.location.href = '${pageContext.request.contextPath}/comp01-user/register.jsp'">
+                        <div>
+                            <div class="feature-icon feature-icon-wrapper">🎂</div>
+                            <h3>Custom Cake Design</h3>
+                            <p>
+                                Design your dream cake for any occasion. Choose flavors, sizes, and
+                                add personalized messages for that perfect touch.
+                            </p>
+                        </div>
+                        <a href="${pageContext.request.contextPath}/comp01-user/register.jsp" class="btn btn-primary w-100">
+                            Book Custom Cake
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card feature-card-modern" onclick="window.location.href = '${pageContext.request.contextPath}/comp01-user/login.jsp'">
+                        <div>
+                            <div class="feature-icon feature-icon-wrapper">🚚</div>
+                            <h3>Fast Delivery</h3>
+                            <p>
+                                Get your favorite treats delivered straight to your doorstep. Fresh,
+                                fast, and reliable service across the city.
+                            </p>
+                        </div>
+                        <a href="${pageContext.request.contextPath}/comp01-user/login.jsp" class="btn btn-primary w-100">
+                            Order with Delivery
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card feature-card-modern" onclick="window.location.href = '${pageContext.request.contextPath}/comp01-user/login.jsp'">
+                        <div>
+                            <div class="feature-icon feature-icon-wrapper">🎁</div>
+                            <h3>Exclusive Promotions</h3>
+                            <p>
+                                Enjoy special discounts and seasonal offers. Join our loyalty
+                                program and save on every order!
+                            </p>
+                        </div>
+                        <a href="${pageContext.request.contextPath}/comp01-user/login.jsp" class="btn btn-primary w-100">
+                            View Offers
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card feature-card-modern" onclick="window.location.href = '${pageContext.request.contextPath}/comp01-user/register.jsp'">
+                        <div>
+                            <div class="feature-icon feature-icon-wrapper">⭐</div>
+                            <h3>Loyalty Rewards</h3>
+                            <p>
+                                Earn points with every purchase. Redeem them for free treats,
+                                discounts, and exclusive member-only perks.
+                            </p>
+                        </div>
+                        <a href="${pageContext.request.contextPath}/comp01-user/register.jsp" class="btn btn-primary w-100">
+                            Join Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card feature-card-modern" onclick="window.location.href = '${pageContext.request.contextPath}/comp01-user/login.jsp'">
+                        <div>
+                            <div class="feature-icon feature-icon-wrapper">💬</div>
+                            <h3>Customer Reviews</h3>
+                            <p>
+                                Read authentic reviews from our happy customers. Share your
+                                experience and help others discover their favorites.
+                            </p>
+                        </div>
+                        <a href="${pageContext.request.contextPath}/comp01-user/login.jsp" class="btn btn-primary w-100">
+                            Read Reviews
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials my-5 p-4 p-md-5 rounded-4" style="background-color: var(--warm-beige);">
+            <div class="text-center mb-4">
+                <h2 class="page-title text-center">What Our Customers Say</h2>
+                <p class="page-subtitle text-center">Real stories from our beloved bakery community</p>
             </div>
 
-            <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Best bakery in town! The quality is consistent, prices are fair, and the staff is incredibly
-                    friendly. Their loyalty program is a great bonus too!"</p>
-                <div class="author">— Emily R., Loyal Member</div>
+            <div class="row g-4 testimonial-grid">
+                <div class="col-md-4">
+                    <div class="testimonial-card testimonial-card-modern">
+                        <div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>
+                                &ldquo;The custom birthday cake was absolutely stunning! The flavor was
+                                incredible and the design exceeded my expectations. Maple &amp; Crumb
+                                made my daughter's special day even more magical!&rdquo;
+                            </p>
+                        </div>
+                        <div class="author mt-2">&mdash; Sarah M., <span class="text-muted fw-normal">Happy Customer</span></div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card testimonial-card-modern">
+                        <div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>
+                                &ldquo;I order from Maple &amp; Crumb every week. Their pastries are always
+                                fresh, and the delivery is prompt. The chocolate croissants are to
+                                die for!&rdquo;
+                            </p>
+                        </div>
+                        <div class="author mt-2">&mdash; James L., <span class="text-muted fw-normal">Regular Customer</span></div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card testimonial-card-modern">
+                        <div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>
+                                &ldquo;Best bakery in town! The quality is consistent, prices are fair,
+                                and the staff is incredibly friendly. Their loyalty program is a
+                                great bonus too!&rdquo;
+                            </p>
+                        </div>
+                        <div class="author mt-2">&mdash; Emily R., <span class="text-muted fw-normal">Loyal Member</span></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- CTA Section -->
-    <div class="cta-section">
-        <h2>Ready to Taste the Difference?</h2>
-        <p>Join thousands of happy customers who trust Maple & Crumb for their daily treats and special occasions.</p>
-        <a href="${pageContext.request.contextPath}/customer/register.jsp" class="btn">🎉 Create Your Account</a>
-    </div>
-</div>
+        <!-- CTA Section -->
+        <section class="cta-section text-center text-white p-5 rounded-4 my-5" style="background: linear-gradient(135deg, var(--mc-espresso) 0%, var(--mc-primary) 100%);">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-6 fw-bold mb-3 font-playfair">Ready to Taste the Difference?</h2>
+                    <p class="lead mb-4 opacity-90">
+                        Join thousands of happy customers who trust Maple &amp; Crumb for their
+                        daily treats and special occasions.
+                    </p>
+                    <a href="${pageContext.request.contextPath}/comp01-user/register.jsp" class="btn btn-light btn-lg px-5 py-3 fw-bold shadow" style="color: var(--mc-primary); border-radius: 50px;">
+                        🎉 Create Your Account
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<jsp:include page="/WEB-INF/includes/footer.jsp"/>
+    <jsp:include page="/WEB-INF/includes/footer.jsp" />
 </body>
 </html>
