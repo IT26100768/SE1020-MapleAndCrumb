@@ -1,4 +1,4 @@
-package com.mapleandcrumb.servlet.comp03;
+package servlet.comp03;
 
 import com.mapleandcrumb.dao.CustomCakeDAO;
 import com.mapleandcrumb.dao.impl.CustomCakeDAOImpl;
