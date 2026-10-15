@@ -1,82 +1,48 @@
 package com.mapleandcrumb.util;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtil {
 
-    private static final String DATA_FOLDER = "data/";
-
-    public static void writeToFile(String fileName, List<String> lines) {
-
-        try {
-            Path dataPath = Paths.get(DATA_FOLDER);
-
-            if (!Files.exists(dataPath)) {
-                Files.createDirectories(dataPath);
-            }
-            Path filePath = dataPath.resolve(fileName);
-
-            Files.write(filePath, lines);
-        } catch (IOException e) {
-            System.err.println("Error writing to file: " + fileName);
-            e.printStackTrace();
-        }
-    }
-
     public static void appendToFile(String fileName, String line) {
-        try {
-            Path dataPath = Paths.get(DATA_FOLDER);
-            if (!Files.exists(dataPath)) {
-                Files.createDirectories(dataPath);
-            }
-
-            Path filePath = dataPath.resolve(fileName);
-
-            if (!Files.exists(filePath)) {
-                Files.createFile(filePath);
-            }
-
-            Files.write(filePath, (line + System.lineSeparator()).getBytes(),
-                    StandardOpenOption.APPEND);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true))) {
+            bw.write(line);
+            bw.newLine();
         } catch (IOException e) {
-            System.err.println("Error appending to file: " + fileName);
-            e.printStackTrace();
+            System.out.println("Error writing to file: " + e.getMessage());
         }
     }
 
     public static List<String> readFromFile(String fileName) {
         List<String> lines = new ArrayList<>();
-        try {
-            Path filePath = Paths.get(DATA_FOLDER, fileName);
+        File file = new File(fileName);
 
-            if (Files.exists(filePath)) {
-                lines = Files.readAllLines(filePath);
+
+        if (!file.exists()) {
+            return lines;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
             }
         } catch (IOException e) {
-            System.err.println("Error reading from file: " + fileName);
-            e.printStackTrace();
+            System.out.println("Error reading from file: " + e.getMessage());
         }
         return lines;
     }
 
-    public static boolean deleteFile(String fileName) {
-        try {
-            Path filePath = Paths.get(DATA_FOLDER, fileName);
-            return Files.deleteIfExists(filePath);
+    public static void writeToFile(String fileName, List<String> lines) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            for (String line : lines) {
+                bw.write(line);
+                bw.newLine();
+            }
         } catch (IOException e) {
-            System.err.println("Error deleting file: " + fileName);
-            e.printStackTrace();
-            return false;
+            System.out.println("Error writing to file: " + e.getMessage());
         }
-    }
-
-    public static boolean fileExists(String fileName) {
-        return Files.exists(Paths.get(DATA_FOLDER, fileName));
     }
 }
