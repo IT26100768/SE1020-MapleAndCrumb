@@ -48,4 +48,3 @@ public class ViewMenuServlet extends HttpServlet {
         doGet(request, response);
     }
 }
-

@@ -37,4 +37,3 @@ public class DeleteProductServlet extends HttpServlet {
         }
     }
 }
-
