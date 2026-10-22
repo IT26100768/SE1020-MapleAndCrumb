@@ -57,3 +57,4 @@ data_files/exports/*
 !data_files/exports/.gitkeep
 data_files/imports/*
 !data_files/imports/.gitkeep
+.agents
