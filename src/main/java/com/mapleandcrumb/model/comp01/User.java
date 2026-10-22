@@ -1,10 +1,10 @@
-package com.mapleandcrumb.model;
+package com.mapleandcrumb.model.comp01;
 
 import java.time.LocalDateTime;
 
 public abstract class User {
     private String userID;
-    private String username; // lowercase 'n' — matches JSP EL ${user.username} → getUsername()
+    private String username;
     private String password;
     private String email;
     private String phone;
@@ -27,13 +27,22 @@ public abstract class User {
         this.userID = userID;
     }
 
-    // getUsername() → JSP EL resolves ${user.username} correctly
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getFullName() {
+        return username;
+    }
+
+    public void setFullName(String fullName) {
+        if (fullName != null && !fullName.trim().isEmpty()) {
+            this.username = fullName.trim();
+        }
     }
 
     public String getPassword() {
@@ -60,7 +69,9 @@ public abstract class User {
         this.phone = phone;
     }
 
-    public abstract boolean authentication(String inputPassword);
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
 
     public abstract String getUserRole();
 }
