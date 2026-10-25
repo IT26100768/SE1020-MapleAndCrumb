@@ -1,12 +1,7 @@
 package com.mapleandcrumb.util;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -16,7 +11,9 @@ import java.util.Properties;
  */
 public class DBUtil {
 
-
+    /**
+     * Functional interface for mapping a ResultSet row to an object instance.
+     */
     @FunctionalInterface
     public interface RowMapper<T> {
         T mapRow(ResultSet rs) throws SQLException;
@@ -40,49 +37,30 @@ public class DBUtil {
     private static void loadConfig() {
         Properties props = new Properties();
 
-        // 1. Try loading db.properties
-        try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties")) {
+        try (InputStream in = DBUtil.class.getResourceAsStream("/db.properties")) {
             if (in != null) {
                 props.load(in);
+            } else {
+                System.err.println("DBUtil: db.properties not found on classpath. Using built-in defaults.");
             }
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            System.err.println("DBUtil: Failed to read db.properties: " + e.getMessage());
         }
 
-        if (props.isEmpty()) {
-            try (InputStream in = DBUtil.class.getResourceAsStream("/db.properties")) {
-                if (in != null) {
-                    props.load(in);
-                }
-            } catch (Exception ignored) {
-            }
-        }
-
-        // 2. Read properties
-        driver = System.getProperty("maple.db.driver",
-                System.getenv("DB_DRIVER") != null ? System.getenv("DB_DRIVER")
-                        : props.getProperty("db.driver", DEFAULT_DRIVER));
-
-        url = System.getProperty("maple.db.url",
-                System.getenv("DB_URL") != null ? System.getenv("DB_URL")
-                        : props.getProperty("db.url", DEFAULT_URL));
-
-        username = System.getProperty("maple.db.username",
-                System.getenv("DB_USER") != null ? System.getenv("DB_USER")
-                        : props.getProperty("db.username", DEFAULT_USER));
-
-        password = System.getProperty("maple.db.password",
-                System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD")
-                        : props.getProperty("db.password", DEFAULT_PASS));
+        driver = props.getProperty("db.driver", DEFAULT_DRIVER);
+        url = props.getProperty("db.url", DEFAULT_URL);
+        username = props.getProperty("db.username", DEFAULT_USER);
+        password = props.getProperty("db.password", DEFAULT_PASS);
 
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
-            System.err.println("Failed to load JDBC driver [" + driver + "]: " + e.getMessage());
+            System.err.println("DBUtil: Failed to load JDBC driver [" + driver + "]: " + e.getMessage());
         }
     }
 
     /**
-     * Obtains a new database connection
+     * Obtains a new database connection from the driver manager.
      */
     public static Connection getConnection() throws SQLException {
         try {
@@ -91,21 +69,6 @@ public class DBUtil {
             System.err.println("DBUtil: Failed to connect to MySQL database at [" + url + "] as [" + username + "]. "
                     + "Please verify that MySQL service is running and maple_and_crumb schema is imported. Detail: " + e.getMessage());
             throw e;
-        }
-    }
-
-    /**
-     * Safely closes one or more AutoCloseable resources.
-     */
-    public static void closeQuietly(AutoCloseable... closeables) {
-        if (closeables == null) return;
-        for (AutoCloseable c : closeables) {
-            if (c != null) {
-                try {
-                    c.close();
-                } catch (Exception ignored) {
-                }
-            }
         }
     }
 
@@ -261,7 +224,7 @@ public class DBUtil {
     }
 
     /**
-     * Executes an INSERT, UPDATE, or DELETE statement
+     * Executes an INSERT, UPDATE, or DELETE statement and returns the number of affected rows.
      */
     public static int executeUpdate(String sql, Object... params) {
         try (Connection conn = getConnection();
@@ -274,7 +237,9 @@ public class DBUtil {
         }
     }
 
-
+    /**
+     * Executes a count query and returns the integer result. Safely manages connection and statement.
+     */
     public static int queryCount(String sql, Object... params) {
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -290,7 +255,9 @@ public class DBUtil {
         return 0;
     }
 
-
+    /**
+     * Resolves the internal order_id (INT) given an integer ID or an order_code (e.g. "ORD-12345").
+     */
     public static Integer findOrderIdByCodeOrId(Connection conn, String orderIdentifier) {
         if (orderIdentifier == null || orderIdentifier.trim().isEmpty()) {
             return null;
@@ -328,8 +295,9 @@ public class DBUtil {
         return null;
     }
 
-
-
+    /**
+     * Resolves the internal custom cake request_id (INT) given an integer ID or a booking_code (e.g. "BKD65FD").
+     */
     public static Integer findCakeRequestIdByCodeOrId(Connection conn, String bookingIdentifier) {
         if (bookingIdentifier == null || bookingIdentifier.trim().isEmpty()) {
             return null;
