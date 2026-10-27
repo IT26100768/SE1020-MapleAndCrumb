@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.prefs.AbstractPreferences;
 
 @WebServlet({ "/addPromo", "/managePromotions", "/manage_promotions", "/comp06-reviews/addPromo", "/comp06-reviews/manage_promotions", "/comp06-reviews/managePromotions", "/comp06-promotions/addPromo", "/comp06-promotions/manage_promotions" })
 public class AddPromoServlet extends HttpServlet {
@@ -58,6 +59,7 @@ public class AddPromoServlet extends HttpServlet {
             return;
         }
 
+        AbstractPreferences ParamUtil;
         String action = ParamUtil.getTrimmed(request, "action");
         if ("delete".equalsIgnoreCase(action)) {
             String promoCode = ParamUtil.getTrimmed(request, "promoCode");
@@ -94,6 +96,8 @@ public class AddPromoServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/managePromotions?error=invalidDate");
             return;
         }
+
+        //add promotion to database percentage or fixed amount
 
         Promotion promo = "PERCENTAGE".equals(discountType)
                 ? new PercentageDiscount(promoCode, description, expiryDate, discountValue)
