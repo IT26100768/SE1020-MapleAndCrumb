@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisanal Custom Cake Studio — Maple &amp; Crumb</title>
+    <title>Artisanal Custom Cake Studio â€” Maple &amp; Crumb</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +17,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Maple & Crumb Custom Styling -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css?v=2.1">
+    <!-- Maple & Crumb Global Stylesheet Suite -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <!-- Custom Cake Studio Stylesheet -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/cake-booking.css">
 </head>
 <body class="d-flex flex-column min-vh-100" style="background-color: var(--maple-cream-50, #fdfbf7);">
 <jsp:include page="/WEB-INF/includes/navbar.jsp" />
@@ -170,7 +174,7 @@
 
                         <div class="col-12">
                             <label for="customMessage" class="form-label small fw-semibold" style="color: var(--maple-dark-800, #2b1810);">Piped Royal Icing Inscription (Optional)</label>
-                            <input type="text" id="customMessage" name="customMessage" class="form-control form-control-maple" maxlength="60" placeholder="e.g. Happy 30th Birthday Eleanor! ✨" value="<c:out value="${param.message}" />">
+                            <input type="text" id="customMessage" name="customMessage" class="form-control form-control-maple" maxlength="60" placeholder="e.g. Happy 30th Birthday Eleanor! âœ¨" value="<c:out value="${param.message}" />">
                             <div class="form-text small text-muted">Piped with pure Madagascar vanilla royal icing (max 60 characters).</div>
                         </div>
 
