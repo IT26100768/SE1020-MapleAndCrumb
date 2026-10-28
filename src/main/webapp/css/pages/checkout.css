@@ -1,0 +1,91 @@
+
+.payment-method-card {
+    border: 1.5px solid var(--mc-border);
+    border-radius: var(--mc-radius-sm);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all var(--mc-transition-fast);
+    background-color: var(--mc-surface);
+}
+
+.payment-method-card:hover {
+    border-color: var(--mc-accent);
+}
+
+.payment-method-card.active {
+    border-color: var(--mc-accent);
+    background-color: var(--mc-accent-subtle);
+}
+
+.order-summary-box {
+    background-color: var(--mc-surface);
+    border: 1px solid var(--mc-border);
+    border-radius: var(--mc-radius-md);
+    box-shadow: var(--mc-shadow-sm);
+    position: sticky;
+    top: 90px;
+}
+
+/* Success Checkmark Circle */
+.success-checkmark-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--mc-success-bg);
+    color: var(--mc-success);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(30, 102, 53, 0.15);
+}
+
+
+/* Cart & Delivery Preferences */
+.delivery-pickup-toggle {
+    display: flex;
+    background-color: var(--mc-surface-low, #f7f3eb);
+    padding: 4px;
+    border-radius: var(--mc-radius-pill, 9999px);
+    border: 1px solid var(--mc-border, rgba(211, 195, 190, 0.4));
+}
+
+.delivery-pickup-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: var(--mc-radius-pill, 9999px);
+    cursor: pointer;
+    transition: all var(--mc-transition-fast, 0.15s ease);
+    color: var(--mc-ink-soft, #4f4440);
+}
+
+.delivery-pickup-option.active {
+    background-color: var(--mc-primary-container, #2b1810);
+    color: #ffffff;
+    box-shadow: var(--mc-shadow-xs, 0 2px 4px rgba(7, 1, 0, 0.04));
+}
+
+/* Order History Status Timeline */
+.order-timeline-step {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.order-timeline-step::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 24px;
+    bottom: -16px;
+    width: 2px;
+    background-color: var(--mc-border, rgba(211, 195, 190, 0.4));
+}
+
+.order-timeline-step:last-child::before {
+    display: none;
+}
