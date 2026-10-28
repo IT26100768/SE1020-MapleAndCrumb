@@ -20,4 +20,8 @@ public interface ProductDAO {
     void updateProduct(Product product);
 
     void deleteProduct(String productId);
+
+    int getLowStockCount(int threshold);
+
+    List<Product> getLowStockProducts(int limit);
 }
