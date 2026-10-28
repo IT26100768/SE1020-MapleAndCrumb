@@ -113,17 +113,23 @@ public class CheckoutServlet extends HttpServlet {
                 Product product = productDAO.getProductById(productId);
                 if (product != null) {
                     int qty = Math.max(1, ParamUtil.getInt(request, "qty", 1));
+                    int maxStock = product.getStockQuantity();
                     boolean found = false;
                     for (int i = 0; i < cart.size(); i++) {
                         OrderItem item = cart.get(i);
                         if (item.getProductId() != null && item.getProductId().equalsIgnoreCase(product.getProductId())) {
-                            cart.set(i, new OrderItem(product.getProductId(), product.getName(), item.getQuantity() + qty, product.getPrice()));
+                            int newTotalQty = item.getQuantity() + qty;
+                            if (newTotalQty > maxStock) {
+                                newTotalQty = maxStock;
+                            }
+                            cart.set(i, new OrderItem(product.getProductId(), product.getName(), newTotalQty, product.getPrice()));
                             found = true;
                             break;
                         }
                     }
                     if (!found) {
-                        cart.add(new OrderItem(product.getProductId(), product.getName(), qty, product.getPrice()));
+                        int initialQty = Math.min(qty, maxStock);
+                        cart.add(new OrderItem(product.getProductId(), product.getName(), Math.max(1, initialQty), product.getPrice()));
                     }
                 }
             }
@@ -140,22 +146,37 @@ public class CheckoutServlet extends HttpServlet {
                     break;
                 }
             }
+            // Recalculate discount after item removal
+            recalculatePromoDiscount(session, cart);
             response.sendRedirect(request.getContextPath() + "/checkout");
             return;
         } else if ("update".equalsIgnoreCase(action) && productId != null) {
-            int newQty = ParamUtil.getInt(request, "qty", 0);
+            int requestedQty = ParamUtil.getInt(request, "qty", 1);
+            Product product = productDAO.getProductById(productId);
+            int maxStock = (product != null) ? product.getStockQuantity() : 999;
+            boolean maxReached = false;
+            int safeQty = requestedQty;
+            if (safeQty > maxStock) {
+                safeQty = maxStock;
+                maxReached = true;
+            }
+            if (safeQty < 1) {
+                safeQty = 1;
+            }
+
             for (int i = 0; i < cart.size(); i++) {
                 OrderItem item = cart.get(i);
                 if (item.getProductId() != null && item.getProductId().equalsIgnoreCase(productId)) {
-                    if (newQty <= 0) {
-                        cart.remove(i);
-                    } else {
-                        cart.set(i, new OrderItem(item.getProductId(), item.getProductName(), newQty, item.getUnitPrice()));
-                    }
+                    cart.set(i, new OrderItem(item.getProductId(), item.getProductName(), safeQty, item.getUnitPrice()));
                     break;
                 }
             }
-            response.sendRedirect(request.getContextPath() + "/checkout");
+
+            // Recalculate discount after quantity update
+            recalculatePromoDiscount(session, cart);
+
+            String redirectSuffix = maxReached ? "?msg=maxStockReached" : "";
+            response.sendRedirect(request.getContextPath() + "/checkout" + redirectSuffix);
             return;
         } else if ("clear".equalsIgnoreCase(action)) {
             cart.clear();
@@ -166,6 +187,33 @@ public class CheckoutServlet extends HttpServlet {
         }
 
         // 3. Recalculate discount if cart changed
+        recalculatePromoDiscount(session, cart);
+
+        // 4. Populate product stock map and forward to the Checkout Page
+        double itemsSubtotal = calculateCartSubtotal(cart);
+        Double appliedDiscount = (Double) session.getAttribute("appliedDiscount");
+        double discountAmount = (appliedDiscount != null) ? appliedDiscount : 0.0;
+        double discountedSubtotal = Math.max(0.0, itemsSubtotal - discountAmount);
+
+        java.util.Map<String, Integer> productStockMap = new java.util.HashMap<>();
+        for (OrderItem it : cart) {
+            if (it.getProductId() != null) {
+                Product p = productDAO.getProductById(it.getProductId());
+                if (p != null) {
+                    productStockMap.put(it.getProductId(), p.getStockQuantity());
+                }
+            }
+        }
+
+        request.setAttribute("cartSubtotal", itemsSubtotal);
+        request.setAttribute("appliedDiscount", discountAmount);
+        request.setAttribute("discountedSubtotal", discountedSubtotal);
+        request.setAttribute("productStockMap", productStockMap);
+
+        request.getRequestDispatcher("/comp04-orders/checkout.jsp").forward(request, response);
+    }
+
+    private void recalculatePromoDiscount(HttpSession session, List<OrderItem> cart) {
         String appliedPromoCode = (String) session.getAttribute("appliedPromoCode");
         if (appliedPromoCode != null) {
             Promotion promo = promotionDAO.getPromotionByCode(appliedPromoCode);
@@ -177,9 +225,6 @@ public class CheckoutServlet extends HttpServlet {
                 session.removeAttribute("appliedDiscount");
             }
         }
-
-        // 4. Forward to the Checkout Page
-        request.getRequestDispatcher("/comp04-orders/checkout.jsp").forward(request, response);
     }
 
     @Override
