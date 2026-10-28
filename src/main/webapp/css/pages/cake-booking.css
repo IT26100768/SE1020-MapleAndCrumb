@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Maple & Crumb Bakery - Custom Cake Studio & Booking Architecture
+   File: pages/cake-booking.css
+   Scope: Bespoke Cake Estimator, Multi-Step Booking Wizard, Tier Selections
+   Framework: Bootstrap 5.3.3 + Custom Tokens
+   ========================================================================== */
+
+/* Interactive Studio Estimator Card */
+.maple-estimator-card {
+    background-color: var(--mc-surface-card);
+    border: 1px solid var(--mc-border);
+    border-radius: var(--mc-radius-xl);
+    padding: 2rem;
+    box-shadow: var(--mc-shadow-md);
+}
+
+
+/* ==========================================================================
+   12. Interactive Custom Cake Studio Widgets
+   ========================================================================== */
+.cake-estimator-card {
+    background: var(--mc-surface);
+    border: 1px solid var(--mc-border);
+    border-radius: var(--mc-radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--mc-shadow-sm);
+}
+
+.estimator-price-display {
+    background: var(--mc-surface-subtle);
+    border: 1.5px dashed var(--mc-sand);
+    border-radius: var(--mc-radius-sm);
+    padding: 0.85rem 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* Custom Cake Feature Section on Homepage */
+.cake-feature {
+    background: var(--mc-surface-warm);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+    padding: 72px 8%;
+    border-radius: var(--mc-radius-xl);
+    margin: 2rem auto;
+}
+
+.cake-feature-copy {
+    align-self: center;
+}
+
+.cake-feature-copy > p:not(.eyebrow) {
+    color: var(--mc-ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 440px;
+    margin-top: 1.25rem;
+}
+
+.cake-steps {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0;
+}
+
+.cake-steps li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid rgba(43, 30, 26, 0.12);
+    padding: 10px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.cake-steps span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--mc-accent);
+    font-weight: 700;
+}
+
+
+/* Booking Step Progress & Consultation Elements */
+.cake-wizard-step {
+    display: none;
+}
+
+.cake-wizard-step.active {
+    display: block;
+}
+
+.cake-tier-option-card {
+    border: 1.5px solid var(--mc-border, rgba(211, 195, 190, 0.4));
+    border-radius: var(--mc-radius-md, 8px);
+    padding: 1.25rem;
+    cursor: pointer;
+    background-color: var(--mc-surface, #ffffff);
+    transition: all var(--mc-transition-fast, 0.15s ease);
+}
+
+.cake-tier-option-card:hover {
+    border-color: var(--mc-accent, #865225);
+    background-color: var(--mc-surface-low, #f7f3eb);
+}
+
+.cake-tier-option-card.active {
+    border-color: var(--mc-accent, #865225);
+    background-color: var(--mc-accent-subtle, #fbf5ee);
+    box-shadow: 0 0 0 2px var(--mc-secondary, #865225);
+}
