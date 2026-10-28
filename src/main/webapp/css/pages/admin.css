@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Maple & Crumb Bakery - Admin Operations Suite Architecture
+   File: pages/admin.css
+   Scope: Operations Dashboard Hub, KPI Cards, Kitchen Queue, Kitchen Tickets, Staff
+   Framework: Bootstrap 5.3.3 + Custom Tokens
+   ========================================================================== */
+
+/* Operations Hub Main Container */
+.mc-ops-main {
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Card System */
+.mc-atelier-card {
+    background: var(--mc-surface-lowest);
+    border-radius: 1rem;
+    border: 1px solid rgba(211, 195, 190, 0.45);
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px -2px rgba(43, 24, 16, 0.04), 0 1px 3px rgba(43, 24, 16, 0.02);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.mc-atelier-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -4px rgba(43, 24, 16, 0.08), 0 3px 8px -1px rgba(43, 24, 16, 0.04);
+    border-color: rgba(200, 138, 88, 0.5);
+}
+
+/* Typography Utilities */
+.font-playfair {
+    font-family: var(--font-playfair);
+}
+
+.font-outfit {
+    font-family: var(--font-outfit);
+}
+
+.text-primary-container {
+    color: var(--mc-primary-container);
+}
+
+.text-secondary {
+    color: var(--mc-secondary);
+}
+
+.text-outline {
+    color: var(--mc-outline);
+}
+
+.text-outline-variant {
+    color: var(--mc-outline-variant);
+}
+
+/* Row 1: KPI Grid (4 Columns) */
+.mc-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+@media (max-width: 1199.98px) {
+    .mc-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 575.98px) {
+    .mc-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mc-kpi-icon-pill {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--mc-surface-low);
+    color: var(--mc-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mc-growth-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.mc-growth-positive {
+    background-color: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+.mc-growth-negative {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+/* Row 2: 2-Column (65% / 35%) */
+.mc-grid-revenue-alerts {
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 991.98px) {
+    .mc-grid-revenue-alerts {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Row 3 & 4: 2-Column Equal (50% / 50%) */
+.mc-grid-equal-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 991.98px) {
+    .mc-grid-equal-2col {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Alert Badges */
+.mc-alert-badge {
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.mc-alert-badge-error {
+    background-color: rgba(186, 26, 26, 0.1);
+    color: #ba1a1a;
+    border: 1px solid rgba(186, 26, 26, 0.25);
+}
+
+.mc-alert-badge-warn {
+    background-color: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.mc-alert-badge-gold {
+    background-color: rgba(134, 82, 37, 0.12);
+    color: #865225;
+    border: 1px solid rgba(134, 82, 37, 0.25);
+}
+
+/* Activity Feed Icons */
+.mc-act-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.mc-act-icon-secondary {
+    background-color: rgba(134, 82, 37, 0.12);
+    color: #865225;
+}
+
+.mc-act-icon-amber {
+    background-color: #fffbeb;
+    color: #b45309;
+}
+
+.mc-act-icon-gold {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+/* Progress Bars */
+.mc-progress-track {
+    flex: 1 1 0%;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: var(--mc-surface-high);
+    overflow: hidden;
+}
+
+.mc-progress-fill-5 {
+    background-color: var(--mc-secondary);
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.mc-progress-fill-4 {
+    background-color: var(--mc-secondary-container);
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.mc-progress-fill-3 {
+    background-color: rgba(253, 184, 130, 0.6);
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.mc-progress-fill-2 {
+    background-color: rgba(253, 184, 130, 0.35);
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.mc-progress-fill-1 {
+    background-color: #fca5a5;
+    height: 100%;
+    border-radius: 9999px;
+}
+
+/* Item Row in Lists */
+.mc-list-item-row {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(211, 195, 190, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.mc-list-item-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Kitchen Ticket Presentation */
+.maple-ticket-body {
+    background-color: #f7f3eb;
+    color: #1c1c17;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.kitchen-ticket-wrap {
+    max-width: 480px;
+    width: 100%;
+    margin: 1.5rem auto 3rem auto;
+    background: #ffffff;
+    border: 1.5px solid rgba(43, 24, 16, 0.2);
+    border-radius: 8px;
+    padding: 1.25rem 1.25rem;
+    box-shadow: 0 4px 18px rgba(43, 24, 16, 0.08);
+    box-sizing: border-box;
+}
+
+.kitchen-ticket-card {
+    background: #faf8f5;
+    border: 1px solid rgba(43, 24, 16, 0.12);
+    border-radius: 6px;
+}
+
+.kitchen-section-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #865225;
+}
+
+@media print {
+    @page {
+        size: portrait;
+        margin: 0.5cm;
+    }
+
+    body, .maple-ticket-body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .btn-no-print {
+        display: none !important;
+    }
+
+    .kitchen-ticket-wrap {
+        margin: 0 auto !important;
+        padding: 0.75rem 1rem !important;
+        border: 1.5px solid #1c1c17 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 4px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .kitchen-ticket-card {
+        border: 1px solid #000000 !important;
+        background: #ffffff !important;
+    }
+
+    .page-break-inside-avoid {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+}
+
+/* Kitchen Queue Kanban & Live Order Status */
+.kitchen-queue-column {
+    background-color: var(--mc-surface-low, #f7f3eb);
+    border: 1px solid var(--mc-border, rgba(211, 195, 190, 0.4));
+    border-radius: var(--radius-lg, 12px);
+    padding: 1.25rem;
+    min-height: 520px;
+}
+
+.kitchen-task-card {
+    background: #ffffff;
+    border: 1px solid rgba(211, 195, 190, 0.4);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.85rem;
+    box-shadow: 0 2px 8px rgba(7, 1, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kitchen-task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(7, 1, 0, 0.08);
+}
