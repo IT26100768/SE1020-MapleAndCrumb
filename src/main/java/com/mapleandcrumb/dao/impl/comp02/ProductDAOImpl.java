@@ -26,6 +26,9 @@ public class ProductDAOImpl implements ProductDAO {
 
         String sql = "INSERT INTO products (product_code, name, category, base_price, stock_quantity, flavor, size_inches, contains_nuts, is_available) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, TRUE)";
+ dev/member6-comp06
+
+ main
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, product.getProductId());
@@ -72,6 +75,10 @@ public class ProductDAOImpl implements ProductDAO {
         return DBUtil.queryList("SELECT * FROM products WHERE LOWER(category) = LOWER(?) ORDER BY product_id ASC",
                 this::mapRowToProduct, category.trim());
     }
+dev/member6-comp06
+
+
+ main
     @Override
     public List<Product> searchByName(String name) {
         if (name == null || name.trim().isEmpty()) {
@@ -131,7 +138,12 @@ public class ProductDAOImpl implements ProductDAO {
             return null;
         }
     }
+ dev/member6-comp06
     mapRowToProduct(ResultSet rs) throws SQLException {
+
+
+    private Product mapRowToProduct(ResultSet rs) throws SQLException {
+      main
         int prodIdInt = rs.getInt("product_id");
         String prodCode = rs.getString("product_code");
         String idToUse = (prodCode != null && !prodCode.trim().isEmpty()) ? prodCode : String.valueOf(prodIdInt);
@@ -149,4 +161,20 @@ public class ProductDAOImpl implements ProductDAO {
 
         return Product.create(idToUse, name, category, price, stock, flavor, sizeInches, containsNuts);
     }
+   dev/member6-comp06
+
+
+    @Override
+    public int getLowStockCount(int threshold) {
+        return DBUtil.queryCount(
+                "SELECT COUNT(*) FROM products WHERE stock_quantity <= ? AND is_available = TRUE",
+                threshold);
+    }
+
+    @Override
+    public List<Product> getLowStockProducts(int limit) {
+        String sql = "SELECT * FROM products WHERE is_available = TRUE ORDER BY stock_quantity ASC, product_id ASC LIMIT ?";
+        return DBUtil.queryList(sql, this::mapRowToProduct, limit);
+    }
+ main
 }

@@ -55,6 +55,14 @@ public abstract class Product {
         this.stockQuantity = stockQuantity;
     }
 
+    public String getFlavor() {
+        return null;
+    }
+
+    public double getBasePrice() {
+        return price;
+    }
+
     public abstract String getDisplayDescription();
 
     /**

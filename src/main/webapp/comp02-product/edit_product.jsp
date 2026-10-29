@@ -17,8 +17,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Maple & Crumb Custom Styling -->
+    <!-- Maple & Crumb Global Stylesheet Suite -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <!-- Products Catalog Stylesheet -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/products.css">
 </head>
 <body class="d-flex flex-column min-vh-100" style="background-color: var(--maple-cream-50, #fdfbf7);">
 <jsp:include page="/WEB-INF/includes/navbar.jsp" />
@@ -131,6 +135,10 @@
                                                     <option value="8" ${sizeInches == 8 ? 'selected' : ''}>8-inch (Serves 10–12)</option>
                                                     <option value="10" ${sizeInches == 10 ? 'selected' : ''}>10-inch (Serves 14–16)</option>
                                                     <option value="12" ${sizeInches == 12 ? 'selected' : ''}>12-inch (Serves 18–22)</option>
+                                                    <option value="6" ${sizeInches == 6 ? 'selected' : ''}>6-inch (Serves 6â€“8)</option>
+                                                    <option value="8" ${sizeInches == 8 ? 'selected' : ''}>8-inch (Serves 10â€“12)</option>
+                                                    <option value="10" ${sizeInches == 10 ? 'selected' : ''}>10-inch (Serves 14â€“16)</option>
+                                                    <option value="12" ${sizeInches == 12 ? 'selected' : ''}>12-inch (Serves 18â€“22)</option>
                                                 </select>
                                             </div>
                                         </div>
