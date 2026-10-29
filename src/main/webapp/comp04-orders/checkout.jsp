@@ -1,13 +1,13 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<%@ page import="java.util.List, java.util.ArrayList, com.mapleandcrumb.model.comp04.OrderItem" %>
+<%@ page import="java.util.List, java.util.ArrayList, java.util.Map, java.util.HashMap, com.mapleandcrumb.model.comp04.OrderItem, com.mapleandcrumb.model.comp02.Product, com.mapleandcrumb.dao.comp02.ProductDAO, com.mapleandcrumb.dao.impl.comp02.ProductDAOImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout &amp; Place Order — Maple &amp; Crumb</title>
+    <title>Checkout &amp; Place Order â€” Maple &amp; Crumb</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Maple & Crumb Custom Styling -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css?v=2.1">
+    <!-- Maple & Crumb Global Stylesheet Suite -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <!-- Orders & Checkout Stylesheet -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/checkout.css">
 </head>
 <body class="d-flex flex-column min-vh-100" style="background-color: var(--maple-cream-50, #fdfbf7);">
 <%
@@ -39,6 +43,24 @@
     request.setAttribute("cartSubtotal", subtotal);
     request.setAttribute("appliedDiscount", discountVal);
     request.setAttribute("discountedSubtotal", finalSubtotal);
+
+    @SuppressWarnings("unchecked")
+    Map<String, Integer> stockMap = (Map<String, Integer>) request.getAttribute("productStockMap");
+    if (stockMap == null) {
+        stockMap = new HashMap<>();
+        try {
+            ProductDAO pdao = new ProductDAOImpl();
+            for (OrderItem it : cart) {
+                if (it.getProductId() != null) {
+                    Product p = pdao.getProductById(it.getProductId());
+                    if (p != null) {
+                        stockMap.put(it.getProductId(), p.getStockQuantity());
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+        request.setAttribute("productStockMap", stockMap);
+    }
 %>
 <jsp:include page="/WEB-INF/includes/navbar.jsp" />
 
@@ -66,6 +88,14 @@
             </a>
         </div>
     </div>
+
+    <c:if test="${param.msg == 'maxStockReached'}">
+        <div class="alert alert-warning alert-dismissible fade show d-flex align-items-center gap-2 mb-4 rounded-3 py-2 px-3 border-0 shadow-sm" role="alert" style="background-color: #fef3c7; color: #92400e;">
+            <span class="material-symbols-outlined fs-5 flex-shrink-0">inventory_2</span>
+            <div class="small fw-semibold">Maximum available kitchen stock reached for this pastry.</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </c:if>
 
     <c:choose>
         <c:when test="${not empty sessionScope.cart && sessionScope.cart.size() > 0}">
@@ -243,16 +273,38 @@
                                         <c:forEach var="item" items="${sessionScope.cart}">
                                             <tr class="border-bottom maple-section-divider">
                                                 <td class="ps-0 py-2">
-                                                    <div class="fw-semibold text-dark small">${item.productName}</div>
-                                                    <div class="smaller text-muted">
-                                                        Rs. <fmt:formatNumber value="${item.unitPrice}" minFractionDigits="2"/> &times; ${item.quantity}
+                                                    <div class="fw-semibold text-dark small mb-1">${item.productName}</div>
+                                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                        <span class="smaller text-muted">Rs. <fmt:formatNumber value="${item.unitPrice}" minFractionDigits="2"/> each</span>
+                                                        <c:set var="availStock" value="${productStockMap[item.productId]}" />
+                                                        <!-- Quantity Stepper Controls -->
+                                                        <div class="d-inline-flex align-items-center border rounded-pill bg-light px-1 py-0 maple-qty-stepper shadow-sm" style="border-color: rgba(134,82,37,0.2) !important;">
+                                                            <a href="${pageContext.request.contextPath}/checkout?action=update&productId=${item.productId}&qty=${item.quantity - 1}"
+                                                               class="btn btn-sm btn-link text-dark p-0 px-1 text-decoration-none d-flex align-items-center justify-content-center ${item.quantity <= 1 ? 'disabled pe-none text-muted opacity-25' : ''}"
+                                                               title="Decrease quantity"
+                                                               aria-label="Decrease quantity of ${item.productName}"
+                                                               style="width: 22px; height: 22px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 15px;">remove</span>
+                                                            </a>
+                                                            <span class="px-2 fw-bold text-dark user-select-none" style="font-size: 0.8125rem; min-width: 20px; text-align: center;">${item.quantity}</span>
+                                                            <a href="${pageContext.request.contextPath}/checkout?action=update&productId=${item.productId}&qty=${item.quantity + 1}"
+                                                               class="btn btn-sm btn-link text-dark p-0 px-1 text-decoration-none d-flex align-items-center justify-content-center ${not empty availStock && item.quantity >= availStock ? 'disabled pe-none text-muted opacity-25' : ''}"
+                                                               title="${not empty availStock && item.quantity >= availStock ? 'Maximum stock reached' : 'Increase quantity'}"
+                                                               aria-label="Increase quantity of ${item.productName}"
+                                                               style="width: 22px; height: 22px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 15px;">add</span>
+                                                            </a>
+                                                        </div>
+                                                        <c:if test="${not empty availStock && item.quantity >= availStock}">
+                                                            <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill" style="font-size: 0.65rem;">Max stock</span>
+                                                        </c:if>
                                                     </div>
                                                 </td>
-                                                <td class="text-end pe-0 py-2">
-                                                    <span class="fw-bold font-playfair small" style="color: var(--maple-dark-900, #070100);">
+                                                <td class="text-end pe-0 py-2 align-middle">
+                                                    <div class="fw-bold font-playfair small" style="color: var(--maple-dark-900, #070100);">
                                                         Rs. <fmt:formatNumber value="${item.subtotal}" minFractionDigits="2"/>
-                                                    </span>
-                                                    <a href="${pageContext.request.contextPath}/checkout?action=remove&productId=${item.productId}" class="text-danger ms-2 smaller text-decoration-none" title="Remove Item" aria-label="Remove ${item.productName}">
+                                                    </div>
+                                                    <a href="${pageContext.request.contextPath}/checkout?action=remove&productId=${item.productId}" class="text-danger smaller text-decoration-none d-inline-flex align-items-center gap-1 mt-1" title="Remove Item" aria-label="Remove ${item.productName}">
                                                         <span class="material-symbols-outlined fs-6 align-middle">delete</span>
                                                     </a>
                                                 </td>

@@ -17,6 +17,9 @@ import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 public class OrderDAOImpl implements OrderDAO {
 
@@ -334,5 +337,72 @@ public class OrderDAOImpl implements OrderDAO {
 
     private Integer findInternalOrderId(Connection conn, String orderIdentifier) {
         return DBUtil.findOrderIdByCodeOrId(conn, orderIdentifier);
+    }
+
+    @Override
+    public double getTodayRevenue() {
+        String sql = "SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE DATE(order_date) = CURRENT_DATE() AND status != 'Cancelled'";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("OrderDAOImpl.getTodayRevenue error: " + e.getMessage());
+        }
+        return 0.0;
+    }
+
+    @Override
+    public double getYesterdayRevenue() {
+        String sql = "SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE DATE(order_date) = DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) AND status != 'Cancelled'";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("OrderDAOImpl.getYesterdayRevenue error: " + e.getMessage());
+        }
+        return 0.0;
+    }
+
+    @Override
+    public int getTodayOrderCount() {
+        return DBUtil.queryCount("SELECT COUNT(*) FROM orders WHERE DATE(order_date) = CURRENT_DATE() AND status != 'Cancelled'");
+    }
+
+    @Override
+    public int getTodayOrderCountByType(String orderType) {
+        return DBUtil.queryCount("SELECT COUNT(*) FROM orders WHERE DATE(order_date) = CURRENT_DATE() AND status != 'Cancelled' AND LOWER(order_type) = LOWER(?)", orderType);
+    }
+
+    @Override
+    public Map<String, Double> getDailyRevenueLast7Days() {
+        Map<String, Double> result = new LinkedHashMap<>();
+        LocalDate today = LocalDate.now();
+        for (int i = 6; i >= 0; i--) {
+            LocalDate d = today.minusDays(i);
+            result.put(d.toString(), 0.0);
+        }
+        String sql = "SELECT DATE(order_date) AS odate, COALESCE(SUM(total_amount), 0) AS daily_sum "
+                + "FROM orders "
+                + "WHERE order_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 6 DAY) AND status != 'Cancelled' "
+                + "GROUP BY DATE(order_date) ORDER BY odate ASC";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                String odate = rs.getString("odate");
+                if (odate != null && result.containsKey(odate)) {
+                    result.put(odate, rs.getDouble("daily_sum"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("OrderDAOImpl.getDailyRevenueLast7Days error: " + e.getMessage());
+        }
+        return result;
     }
 }
