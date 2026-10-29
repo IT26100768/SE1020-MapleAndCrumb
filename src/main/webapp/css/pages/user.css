@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Maple & Crumb Bakery - User & Authentication Architecture
+   File: pages/user.css
+   Scope: Login, Registration, Profile Management & Security Settings
+   Framework: Bootstrap 5.3.3 + Custom Tokens
+   ========================================================================== */
+
+/* User Authentication & Profile Card */
+.maple-auth-card {
+    background: #ffffff;
+    border-radius: var(--radius-xl, 16px);
+    box-shadow: 0 12px 36px rgba(7, 1, 0, 0.06);
+}
+
+/* Profile Details & Security Panes */
+.user-profile-avatar-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--mc-primary-container, #2b1810);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(43, 24, 16, 0.15);
+}
+
+.user-stat-card {
+    background-color: var(--mc-surface-low, #f7f3eb);
+    border: 1px solid var(--mc-border, rgba(211, 195, 190, 0.4));
+    border-radius: var(--mc-radius-md, 8px);
+    padding: 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mc-shadow-xs, 0 2px 4px rgba(7, 1, 0, 0.04));
+}
