@@ -67,6 +67,10 @@ public class CustomCakeOrder implements CakeBuilder {
         return sizeInches;
     }
 
+    public String getSize() {
+        return String.valueOf(sizeInches);
+    }
+
     public String getCustomMessage() {
         return customMessage;
     }
