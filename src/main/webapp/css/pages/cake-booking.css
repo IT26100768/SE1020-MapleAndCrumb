@@ -1,10 +1,3 @@
-/* ==========================================================================
-   Maple & Crumb Bakery - Custom Cake Studio & Booking Architecture
-   File: pages/cake-booking.css
-   Scope: Bespoke Cake Estimator, Multi-Step Booking Wizard, Tier Selections
-   Framework: Bootstrap 5.3.3 + Custom Tokens
-   ========================================================================== */
-
 /* Interactive Studio Estimator Card */
 .maple-estimator-card {
     background-color: var(--mc-surface-card);
@@ -14,10 +7,6 @@
     box-shadow: var(--mc-shadow-md);
 }
 
-
-/* ==========================================================================
-   12. Interactive Custom Cake Studio Widgets
-   ========================================================================== */
 .cake-estimator-card {
     background: var(--mc-surface);
     border: 1px solid var(--mc-border);
@@ -35,7 +24,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 
 /* Custom Cake Feature Section on Homepage */
 .cake-feature {
@@ -82,7 +70,6 @@
     color: var(--mc-accent);
     font-weight: 700;
 }
-
 
 /* Booking Step Progress & Consultation Elements */
 .cake-wizard-step {
