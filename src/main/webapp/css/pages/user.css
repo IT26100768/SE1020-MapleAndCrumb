@@ -1,11 +1,3 @@
-/* ==========================================================================
-   Maple & Crumb Bakery - User & Authentication Architecture
-   File: pages/user.css
-   Scope: Login, Registration, Profile Management & Security Settings
-   Framework: Bootstrap 5.3.3 + Custom Tokens
-   ========================================================================== */
-
-/* User Authentication & Profile Card */
 .maple-auth-card {
     background: #ffffff;
     border-radius: var(--radius-xl, 16px);
