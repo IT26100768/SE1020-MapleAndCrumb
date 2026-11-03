@@ -1,9 +1,7 @@
 (function (window, document) {
     'use strict';
 
-    // -------------------------------------------------------------------------
     // 1. Mobile Drawer Navigation Toggle (navbar.jsp)
-    // -------------------------------------------------------------------------
     function toggleMapleMobileMenu() {
         const drawer = document.getElementById('mapleMobileDrawer');
         if (drawer) {
@@ -11,9 +9,7 @@
         }
     }
 
-    // -------------------------------------------------------------------------
     // 2. User Avatar Dropdown Toggle (navbar.jsp)
-    // -------------------------------------------------------------------------
     function toggleMapleUserDropdown(event) {
         if (event) event.stopPropagation();
         const dd = document.getElementById('mapleUserDropdown');
@@ -39,9 +35,7 @@
         }
     });
 
-    // -------------------------------------------------------------------------
     // 3. Admin Sidebar Toggle Helper (admin_sidebar.jsp)
-    // -------------------------------------------------------------------------
     function toggleAdminSidebar(force) {
         const sb = document.getElementById('mcAdminSidebar');
         const bd = document.getElementById('mcAdminSidebarBackdrop');
@@ -56,9 +50,6 @@
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Public Global Exports
-    // -------------------------------------------------------------------------
     window.toggleMapleMobileMenu = toggleMapleMobileMenu;
     window.toggleMapleUserDropdown = toggleMapleUserDropdown;
     if (typeof window.toggleAdminSidebar !== 'function') {
