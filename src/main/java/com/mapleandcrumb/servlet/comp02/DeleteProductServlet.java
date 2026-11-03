@@ -10,9 +10,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
-@WebServlet({ "/deleteProduct", "/comp02-products/deleteProduct" })
+@WebServlet({"/deleteProduct", "/comp02-products/deleteProduct"})
 public class DeleteProductServlet extends HttpServlet {
     private final ProductDAO productDAO = new ProductDAOImpl();
 
