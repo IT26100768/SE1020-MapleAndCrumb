@@ -13,9 +13,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
-@WebServlet({ "/editProduct", "/comp02-products/editProduct" })
+@WebServlet({"/editProduct", "/comp02-products/editProduct"})
+
 public class EditProductServlet extends HttpServlet {
     private final ProductDAO productDAO = new ProductDAOImpl();
 
