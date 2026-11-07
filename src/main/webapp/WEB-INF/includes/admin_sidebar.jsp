@@ -9,15 +9,38 @@
 
     String activeTab = request.getParameter("activeTab");
     if (activeTab == null || activeTab.trim().isEmpty()) {
-        if (currentURI.endsWith("dashboard.jsp")) activeTab = "dashboard";
-        else if (currentURI.contains("kitchenQueue") || currentURI.contains("kitchen_queue") || currentURI.contains("kitchenTicket") || currentURI.contains("kitchen_ticket")) activeTab = "kitchen";
-        else if (currentURI.contains("manageProducts") || currentURI.contains("comp02-products") || currentURI.contains("Product") || currentURI.contains("product")) activeTab = "products";
-        else if (currentURI.contains("manageBookings") || currentURI.contains("comp03-bookings") || currentURI.contains("Booking") || currentURI.contains("bookCake")) activeTab = "bookings";
-        else if (currentURI.contains("viewOrders") || currentURI.contains("orderHistory") || currentURI.contains("comp04-orders") || currentURI.contains("Order")) activeTab = "orders";
-        else if (currentURI.contains("managePromotions") || currentURI.contains("comp06-reviews/manage_promotions") || currentURI.contains("promo")) activeTab = "promotions";
-        else if (currentURI.contains("viewReviews") || currentURI.contains("comp06-reviews/view_reviews") || currentURI.contains("Review")) activeTab = "reviews";
-        else if (currentURI.contains("viewStaff") || currentURI.contains("manage_staff") || currentURI.contains("add_staff")) activeTab = "staff";
-        else activeTab = "dashboard";
+        String cleanUri = currentURI;
+        String ctx = request.getContextPath();
+        if (ctx != null && !ctx.isEmpty() && cleanUri.startsWith(ctx)) {
+            cleanUri = cleanUri.substring(ctx.length());
+        }
+        int qIdx = cleanUri.indexOf('?');
+        if (qIdx >= 0) {
+            cleanUri = cleanUri.substring(0, qIdx);
+        }
+        if (cleanUri.length() > 1 && cleanUri.endsWith("/")) {
+            cleanUri = cleanUri.substring(0, cleanUri.length() - 1);
+        }
+
+        if (cleanUri.equals("/comp05-admin/dashboard.jsp") || cleanUri.equals("/dashboard") || cleanUri.equals("/admin")) {
+            activeTab = "dashboard";
+        } else if (cleanUri.startsWith("/kitchenQueue") || cleanUri.startsWith("/kitchen_queue") || cleanUri.startsWith("/kitchenTicket") || cleanUri.startsWith("/comp05-admin/kitchen")) {
+            activeTab = "kitchen";
+        } else if (cleanUri.startsWith("/manageProducts") || cleanUri.startsWith("/manage_products") || cleanUri.startsWith("/addProduct") || cleanUri.startsWith("/editProduct") || cleanUri.startsWith("/comp02-products")) {
+            activeTab = "products";
+        } else if (cleanUri.startsWith("/manageBookings") || cleanUri.startsWith("/manage_bookings") || cleanUri.startsWith("/comp03-bookings/manage")) {
+            activeTab = "bookings";
+        } else if (cleanUri.startsWith("/viewOrders") || cleanUri.startsWith("/comp04-orders/order_history") || cleanUri.startsWith("/orderHistory")) {
+            activeTab = "orders";
+        } else if (cleanUri.startsWith("/managePromotions") || cleanUri.startsWith("/manage_promotions") || cleanUri.startsWith("/addPromo") || cleanUri.equals("/comp06-reviews/manage_promotions.jsp")) {
+            activeTab = "promotions";
+        } else if (cleanUri.startsWith("/viewReviews") || cleanUri.startsWith("/view_reviews") || cleanUri.equals("/comp06-reviews/view_reviews.jsp")) {
+            activeTab = "reviews";
+        } else if (cleanUri.startsWith("/viewStaff") || cleanUri.startsWith("/manageStaff") || cleanUri.startsWith("/manage_staff") || cleanUri.startsWith("/addStaff") || cleanUri.startsWith("/comp05-admin/manage_staff") || cleanUri.startsWith("/comp05-admin/add_staff")) {
+            activeTab = "staff";
+        } else {
+            activeTab = "dashboard";
+        }
     }
     request.setAttribute("currentActiveTab", activeTab);
 
@@ -51,227 +74,12 @@
     }
 %>
 
-<style id="mc-admin-scoped-layout-styles">
-    .mc-admin-layout-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: stretch !important;
-        width: 100% !important;
-        min-height: calc(100vh - 104px);
-        background-color: #fdf9f1;
-        position: relative;
-        box-sizing: border-box;
-    }
-    .mc-admin-sidebar {
-        width: 280px !important;
-        min-width: 280px !important;
-        max-width: 280px !important;
-        flex: 0 0 280px !important;
-        flex-shrink: 0 !important;
-        position: sticky !important;
-        top: 104px !important;
-        height: calc(100vh - 104px) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        background-color: #ffffff !important;
-        border-right: 1px solid rgba(211, 195, 190, 0.4) !important;
-        z-index: 25;
-        box-sizing: border-box;
-    }
-    .mc-sidebar-inner {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow: hidden;
-    }
-    .mc-sidebar-brand-wrap {
-        padding: 1.25rem 1.25rem 1rem 1.25rem;
-        border-bottom: 1px solid rgba(211, 195, 190, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
-        background-color: #ffffff;
-    }
-    .mc-sidebar-brand-left {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    .mc-sidebar-monogram {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        background-color: #2b1810;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 700;
-        font-size: 1.15rem;
-        box-shadow: 0 2px 6px rgba(43, 24, 16, 0.15);
-        flex-shrink: 0;
-    }
-    .mc-sidebar-brand-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #070100;
-        line-height: 1.2;
-        margin: 0;
-    }
-    .mc-sidebar-brand-sub {
-        font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.72rem;
-        font-weight: 500;
-        color: #6a5a54;
-        margin: 0;
-    }
-    .mc-sidebar-nav-scroll {
-        flex: 1 1 0%;
-        overflow-y: auto;
-        padding: 1rem 0.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-    .mc-sidebar-section-title {
-        display: block;
-        padding: 0 0.5rem 0.4rem 0.5rem;
-        font-size: 0.68rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #865225;
-    }
-    .mc-sidebar-nav-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-    .mc-sidebar-nav-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem 0.75rem;
-        border-radius: 10px;
-        text-decoration: none !important;
-        transition: background-color 0.15s ease, color 0.15s ease;
-        font-size: 0.825rem;
-        font-weight: 500;
-        color: #1c1c17;
-    }
-    .mc-sidebar-nav-item:hover {
-        background-color: #f7f3eb;
-        color: #070100;
-    }
-    .mc-sidebar-nav-item.active {
-        background-color: #2b1810 !important;
-        color: #ffffff !important;
-        font-weight: 600;
-        box-shadow: 0 2px 6px rgba(43, 24, 16, 0.12);
-    }
-    .mc-sidebar-nav-left {
-        display: flex;
-        align-items: center;
-        gap: 0.65rem;
-    }
-    .mc-sidebar-nav-icon {
-        font-size: 1.15rem !important;
-        color: #865225;
-    }
-    .mc-sidebar-nav-item.active .mc-sidebar-nav-icon {
-        color: #fdb882 !important;
-    }
-    .mc-sidebar-nav-label {
-        white-space: nowrap;
-    }
-    .mc-sidebar-badge {
-        font-size: 0.68rem;
-        font-weight: 600;
-        padding: 0.15rem 0.55rem;
-        border-radius: 9999px;
-        background-color: #f1ede6;
-        color: #4f4440;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        white-space: nowrap;
-    }
-    .mc-sidebar-nav-item.active .mc-sidebar-badge {
-        background-color: #865225 !important;
-        color: #ffffff !important;
-    }
-    .mc-sidebar-badge-gold {
-        background-color: #ffdea5;
-        color: #261900;
-    }
-    .mc-sidebar-badge-live {
-        background-color: #865225;
-        color: #ffffff;
-    }
-    .mc-sidebar-live-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: #4ade80;
-        animation: mcPulse 1.8s infinite;
-    }
-    .mc-sidebar-gateway {
-        padding-top: 0.85rem;
-        border-top: 1px solid rgba(211, 195, 190, 0.25);
-    }
-    .mc-admin-content-canvas {
-        flex: 1 1 0% !important;
-        min-width: 0 !important;
-        width: calc(100% - 280px) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        background-color: #fdf9f1;
-        box-sizing: border-box;
-    }
-    .mc-admin-sidebar-backdrop {
-        display: none;
-        position: fixed;
-        top: 104px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(7, 1, 0, 0.45);
-        z-index: 1040;
-        backdrop-filter: blur(2px);
-    }
-    @media (max-width: 991.98px) {
-        .mc-admin-layout-wrapper {
-            display: block !important;
-        }
-        .mc-admin-sidebar {
-            position: fixed !important;
-            top: 104px !important;
-            left: 0 !important;
-            bottom: 0 !important;
-            height: calc(100vh - 104px) !important;
-            transform: translateX(-100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            z-index: 1050 !important;
-        }
-        .mc-admin-sidebar.show {
-            transform: translateX(0) !important;
-        }
-        .mc-admin-sidebar-backdrop.show {
-            display: block !important;
-        }
-        .mc-admin-content-canvas {
-            width: 100% !important;
-        }
-    }
-</style>
+<!-- Admin Suite Layout & Sidebar styles are provided by css/layout.css -->
 
+<!-- Mobile Backdrop Overlay -->
 <div id="mcAdminSidebarBackdrop" class="mc-admin-sidebar-backdrop" onclick="toggleAdminSidebar(false)"></div>
 
+<!-- Left Dedicated Navigation Sidebar -->
 <aside id="mcAdminSidebar" class="mc-admin-sidebar">
     <div class="mc-sidebar-inner">
         <!-- Brand Header -->
@@ -282,19 +90,23 @@
                 </div>
                 <div>
                     <h1 class="mc-sidebar-brand-title">Maple &amp; Crumb</h1>
-                    <p class="mc-sidebar-brand-sub">Haute-Pâtisserie Atelier</p>
+                    <p class="mc-sidebar-brand-sub">Haute-PÃ¢tisserie Atelier</p>
                 </div>
             </div>
+            <!-- Mobile Close Button -->
             <button type="button" class="d-lg-none btn btn-sm btn-link text-muted p-0 text-decoration-none" onclick="toggleAdminSidebar(false)" aria-label="Close Sidebar">
                 <span class="material-symbols-outlined fs-5">close</span>
             </button>
         </div>
 
+        <!-- Navigation Menu Items -->
         <div class="mc-sidebar-nav-scroll mc-custom-scroll">
             <div>
                 <span class="mc-sidebar-section-title">Consoles &amp; Modules</span>
                 <nav class="mc-sidebar-nav-list">
+                    <!-- 1. Console Operations Hub (Executive Dashboard) -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'dashboard' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'dashboard' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/comp05-admin/dashboard.jsp">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">dashboard</span>
@@ -303,11 +115,13 @@
                         <span class="mc-sidebar-badge">Suite</span>
                     </a>
 
+                    <!-- 2. Kitchen Operations Queue -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'kitchen' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'kitchen' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/kitchenQueue">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">countertops</span>
-                            <span class="mc-sidebar-nav-label">Kitchen Operations</span>
+                            <span class="mc-sidebar-nav-label">Kitchen Queue</span>
                         </div>
                         <c:choose>
                             <c:when test="${kpiActiveTasks > 0}">
@@ -322,57 +136,69 @@
                         </c:choose>
                     </a>
 
+                    <!-- 3. Product Catalogue -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'products' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'products' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/manageProducts">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">inventory_2</span>
-                            <span class="mc-sidebar-nav-label">Product Catalogue</span>
+                            <span class="mc-sidebar-nav-label">Product Inventory</span>
                         </div>
                         <span class="mc-sidebar-badge">${kpiProductCount}</span>
                     </a>
 
+                    <!-- 4. Cake Reservations -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'bookings' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'bookings' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/manageBookings">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">cake</span>
-                            <span class="mc-sidebar-nav-label">Cake Reservations</span>
+                            <span class="mc-sidebar-nav-label">Cake Bookings</span>
                         </div>
                         <span class="mc-sidebar-badge">${kpiBookingCount}</span>
                     </a>
 
+                    <!-- 5. Order Fulfillment -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'orders' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'orders' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/viewOrders?view=manage">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">local_shipping</span>
-                            <span class="mc-sidebar-nav-label">Order Fulfillment</span>
+                            <span class="mc-sidebar-nav-label">Orders &amp; Dispatch</span>
                         </div>
                         <span class="mc-sidebar-badge">${kpiOrderCount}</span>
                     </a>
 
+                    <!-- 6. Promotions & Discounts -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'promotions' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'promotions' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/managePromotions">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">local_offer</span>
-                            <span class="mc-sidebar-nav-label">Promotions</span>
+                            <span class="mc-sidebar-nav-label">Manage Promotions</span>
                         </div>
                         <span class="mc-sidebar-badge">${kpiActivePromos} Active</span>
                     </a>
 
+                    <!-- 7. Customer Reviews -->
                     <a class="mc-sidebar-nav-item ${currentActiveTab == 'reviews' ? 'active' : ''}" 
+                       aria-current="${currentActiveTab == 'reviews' ? 'page' : 'false'}"
                        href="${pageContext.request.contextPath}/viewReviews">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">star</span>
                             <span class="mc-sidebar-nav-label">Customer Reviews</span>
                         </div>
-                        <span class="mc-sidebar-badge mc-sidebar-badge-gold">${averageRating}★</span>
+                        <span class="mc-sidebar-badge mc-sidebar-badge-gold">${averageRating}â˜…</span>
                     </a>
 
+                    <!-- 8. Staff Directory (Admin Only) -->
                     <c:if test="${sessionScope.loggedInUser.userRole == 'ADMIN'}">
                         <a class="mc-sidebar-nav-item ${currentActiveTab == 'staff' ? 'active' : ''}" 
+                           aria-current="${currentActiveTab == 'staff' ? 'page' : 'false'}"
                            href="${pageContext.request.contextPath}/viewStaff">
                             <div class="mc-sidebar-nav-left">
                                 <span class="material-symbols-outlined mc-sidebar-nav-icon">badge</span>
-                                <span class="mc-sidebar-nav-label">Staff &amp; Payroll</span>
+                                <span class="mc-sidebar-nav-label">Staff Directory</span>
                             </div>
                             <span class="mc-sidebar-badge">${kpiStaffCount}</span>
                         </a>
@@ -380,16 +206,19 @@
                 </nav>
             </div>
 
+            <!-- Atelier Gateway Links -->
             <div class="mc-sidebar-gateway">
                 <span class="mc-sidebar-section-title">Atelier Gateway</span>
                 <nav class="mc-sidebar-nav-list">
+                    <!-- Public Storefront -->
                     <a class="mc-sidebar-nav-item" href="${pageContext.request.contextPath}/menu">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">store</span>
                             <span class="mc-sidebar-nav-label">Public Storefront</span>
                         </div>
-                        <span class="mc-sidebar-badge" style="color: #15803d; background-color: #dcfce7; border: 1px solid #bbf7d0;">Open ↗</span>
+                        <span class="mc-sidebar-badge" style="color: #15803d; background-color: #dcfce7; border: 1px solid #bbf7d0;">Open â†—</span>
                     </a>
+                    <!-- Account Profile -->
                     <a class="mc-sidebar-nav-item" href="${pageContext.request.contextPath}/comp01-user/profile.jsp">
                         <div class="mc-sidebar-nav-left">
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">manage_accounts</span>
@@ -403,6 +232,7 @@
     </div>
 </aside>
 
+<!-- Admin Mobile Toggle Script -->
 <script>
     function toggleAdminSidebar(force) {
         var sb = document.getElementById('mcAdminSidebar');
