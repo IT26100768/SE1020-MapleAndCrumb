@@ -28,11 +28,12 @@ language="java" %> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- Maple & Crumb Custom Styling -->
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/maple-crumb.css"
-    />
+    <!-- Maple & Crumb Global Stylesheet Suite -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/maple-crumb.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <!-- User Authentication Stylesheet -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/user.css">
   </head>
   <body
     class="d-flex flex-column min-vh-100"
