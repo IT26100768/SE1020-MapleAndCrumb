@@ -73,5 +73,9 @@ public abstract class User {
         return registrationDate;
     }
 
+    public String getAdminLevel() {
+        return null;
+    }
+
     public abstract String getUserRole();
 }
