@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Reviews &amp; Ratings â€” Maple &amp; Crumb</title>
+    <title>Customer Reviews &amp; Ratings — Maple &amp; Crumb</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,7 +147,7 @@
 
                 <!-- 5 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">5 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">5 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct5Star}%;" role="progressbar" aria-valuenow="${pct5Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -156,7 +156,7 @@
 
                 <!-- 4 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">4 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">4 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct4Star}%;" role="progressbar" aria-valuenow="${pct4Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -165,7 +165,7 @@
 
                 <!-- 3 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">3 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">3 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct3Star}%;" role="progressbar" aria-valuenow="${pct3Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -174,7 +174,7 @@
 
                 <!-- 2 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">2 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">2 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct2Star}%;" role="progressbar" aria-valuenow="${pct2Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -183,7 +183,7 @@
 
                 <!-- 1 Star -->
                 <div class="d-flex align-items-center gap-2 small">
-                    <span class="text-muted" style="width: 48px;">1 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">1 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct1Star}%;" role="progressbar" aria-valuenow="${pct1Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -231,10 +231,10 @@
                         <div class="col-md-6">
                             <label for="reviewProductSelect" class="form-label small fw-semibold text-dark">Select Bakery Item <span class="text-danger">*</span></label>
                             <select name="productId" id="reviewProductSelect" class="form-select form-control-maple" required>
-                                <option value="" disabled ${empty selectedProductId || selectedProductId == 'ALL' ? 'selected' : ''}>â€” Choose a pastry, bread, or cake â€”</option>
+                                <option value="" disabled ${empty selectedProductId || selectedProductId == 'ALL' ? 'selected' : ''}>— Choose a pastry, bread, or cake —</option>
                                 <c:forEach var="p" items="${products}">
                                     <option value="${p.productId}" ${selectedProductId == p.productId ? 'selected' : ''}>
-                                        ${p.name} (${p.category} â€” Rs. <fmt:formatNumber value="${p.price}" minFractionDigits="2"/>)
+                                        ${p.name} (${p.category} — Rs. <fmt:formatNumber value="${p.price}" minFractionDigits="2"/>)
                                     </option>
                                 </c:forEach>
                             </select>
@@ -261,7 +261,7 @@
                                     <label for="cust_star5" class="star-rating-star material-symbols-outlined" data-value="5" title="5 stars - Outstanding">star</label>
                                 </div>
                                 <div class="star-rating-feedback">
-                                    <span class="star-rating-text-label">5 stars â€” Outstanding</span>
+                                    <span class="star-rating-text-label">5 stars — Outstanding</span>
                                     <span class="text-muted smaller d-block" style="font-size: 0.72rem;">Click a star or use arrow keys to adjust rating</span>
                                 </div>
                             </div>
@@ -496,7 +496,7 @@
 
                 <!-- 5 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">5 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">5 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct5Star}%;" role="progressbar" aria-valuenow="${pct5Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -505,7 +505,7 @@
 
                 <!-- 4 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">4 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">4 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct4Star}%;" role="progressbar" aria-valuenow="${pct4Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -514,7 +514,7 @@
 
                 <!-- 3 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">3 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">3 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct3Star}%;" role="progressbar" aria-valuenow="${pct3Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -523,7 +523,7 @@
 
                 <!-- 2 Star -->
                 <div class="d-flex align-items-center gap-2 mb-2 small">
-                    <span class="text-muted" style="width: 48px;">2 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">2 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct2Star}%;" role="progressbar" aria-valuenow="${pct2Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -532,7 +532,7 @@
 
                 <!-- 1 Star -->
                 <div class="d-flex align-items-center gap-2 small">
-                    <span class="text-muted" style="width: 48px;">1 â˜…</span>
+                    <span class="text-muted" style="width: 48px;">1 ★</span>
                     <div class="progress flex-grow-1" style="height: 8px; background-color: #ece8e0; border-radius: 999px;">
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct1Star}%;" role="progressbar" aria-valuenow="${pct1Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -580,10 +580,10 @@
                         <div class="col-md-6">
                             <label for="reviewProductSelect" class="form-label small fw-semibold text-dark">Select Bakery Item <span class="text-danger">*</span></label>
                             <select name="productId" id="reviewProductSelect" class="form-select form-control-maple" required>
-                                <option value="" disabled ${empty selectedProductId || selectedProductId == 'ALL' ? 'selected' : ''}>â€” Choose a pastry, bread, or cake â€”</option>
+                                <option value="" disabled ${empty selectedProductId || selectedProductId == 'ALL' ? 'selected' : ''}>— Choose a pastry, bread, or cake —</option>
                                 <c:forEach var="p" items="${products}">
                                     <option value="${p.productId}" ${selectedProductId == p.productId ? 'selected' : ''}>
-                                        ${p.name} (${p.category} â€” Rs. <fmt:formatNumber value="${p.price}" minFractionDigits="2"/>)
+                                        ${p.name} (${p.category} — Rs. <fmt:formatNumber value="${p.price}" minFractionDigits="2"/>)
                                     </option>
                                 </c:forEach>
                             </select>
@@ -610,7 +610,7 @@
                                     <label for="cust_star5" class="star-rating-star material-symbols-outlined" data-value="5" title="5 stars - Outstanding">star</label>
                                 </div>
                                 <div class="star-rating-feedback">
-                                    <span class="star-rating-text-label">5 stars â€” Outstanding</span>
+                                    <span class="star-rating-text-label">5 stars — Outstanding</span>
                                     <span class="text-muted smaller d-block" style="font-size: 0.72rem;">Click a star or use arrow keys to adjust rating</span>
                                 </div>
                             </div>

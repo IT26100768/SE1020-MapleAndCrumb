@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisanal Custom Cake Studio â€” Maple &amp; Crumb</title>
+    <title>Artisanal Custom Cake Studio — Maple &amp; Crumb</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -174,7 +174,7 @@
 
                         <div class="col-12">
                             <label for="customMessage" class="form-label small fw-semibold" style="color: var(--maple-dark-800, #2b1810);">Piped Royal Icing Inscription (Optional)</label>
-                            <input type="text" id="customMessage" name="customMessage" class="form-control form-control-maple" maxlength="60" placeholder="e.g. Happy 30th Birthday Eleanor! âœ¨" value="<c:out value="${param.message}" />">
+                            <input type="text" id="customMessage" name="customMessage" class="form-control form-control-maple" maxlength="60" placeholder="e.g. Happy 30th Birthday Eleanor! ✨" value="<c:out value="${param.message}" />">
                             <div class="form-text small text-muted">Piped with pure Madagascar vanilla royal icing (max 60 characters).</div>
                         </div>
 

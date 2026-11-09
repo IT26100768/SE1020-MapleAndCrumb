@@ -90,7 +90,7 @@
                 </div>
                 <div>
                     <h1 class="mc-sidebar-brand-title">Maple &amp; Crumb</h1>
-                    <p class="mc-sidebar-brand-sub">Haute-PÃ¢tisserie Atelier</p>
+                    <p class="mc-sidebar-brand-sub">Haute-Pâtisserie Atelier</p>
                 </div>
             </div>
             <!-- Mobile Close Button -->
@@ -188,7 +188,7 @@
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">star</span>
                             <span class="mc-sidebar-nav-label">Customer Reviews</span>
                         </div>
-                        <span class="mc-sidebar-badge mc-sidebar-badge-gold">${averageRating}â˜…</span>
+                        <span class="mc-sidebar-badge mc-sidebar-badge-gold">${averageRating}★</span>
                     </a>
 
                     <!-- 8. Staff Directory (Admin Only) -->
@@ -216,7 +216,7 @@
                             <span class="material-symbols-outlined mc-sidebar-nav-icon">store</span>
                             <span class="mc-sidebar-nav-label">Public Storefront</span>
                         </div>
-                        <span class="mc-sidebar-badge" style="color: #15803d; background-color: #dcfce7; border: 1px solid #bbf7d0;">Open â†—</span>
+                        <span class="mc-sidebar-badge" style="color: #15803d; background-color: #dcfce7; border: 1px solid #bbf7d0;">Open ↗</span>
                     </a>
                     <!-- Account Profile -->
                     <a class="mc-sidebar-nav-item" href="${pageContext.request.contextPath}/comp01-user/profile.jsp">
