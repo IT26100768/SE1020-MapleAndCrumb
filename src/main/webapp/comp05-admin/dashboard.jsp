@@ -208,7 +208,7 @@
                         alert.put("badgeClass", "mc-alert-badge-error");
                         alert.put("sub", "0 units left");
                         alert.put("title", p.getName() != null ? p.getName() : "Pastry Item");
-                        alert.put("desc", (p.getCategory() != null ? p.getCategory() : "Boutique") + " Â· Replenishment needed");
+                        alert.put("desc", (p.getCategory() != null ? p.getCategory() : "Boutique") + " · Replenishment needed");
                         alert.put("actionLabel", "Update Stock");
                         alert.put("actionUrl", request.getContextPath() + "/manageProducts");
                         alertItems.add(alert);
@@ -224,8 +224,8 @@
                     alert.put("badgeClass", "mc-alert-badge-warn");
                     alert.put("sub", ot.getFormattedShortDueDatetime() != null ? ot.getFormattedShortDueDatetime() : "Immediate");
                     String tType = ot.getTaskType();
-                    alert.put("title", "#" + ot.getReferenceCode() + " Â· " + ("CUSTOM_CAKE".equals(tType) ? ot.getCustomCakeFlavor() : "Pastry Batch"));
-                    alert.put("desc", "Kitchen station Â· " + (ot.getFulfillmentType() != null ? ot.getFulfillmentType() : "Fulfillment"));
+                    alert.put("title", "#" + ot.getReferenceCode() + " · " + ("CUSTOM_CAKE".equals(tType) ? ot.getCustomCakeFlavor() : "Pastry Batch"));
+                    alert.put("desc", "Kitchen station · " + (ot.getFulfillmentType() != null ? ot.getFulfillmentType() : "Fulfillment"));
                     alert.put("actionLabel", "Review Order");
                     alert.put("actionUrl", request.getContextPath() + "/kitchenQueue?date=overdue");
                     alertItems.add(alert);
@@ -240,8 +240,8 @@
                         alert.put("type", "Order Hold");
                         alert.put("badgeClass", "mc-alert-badge-gold");
                         alert.put("sub", "Pending approval");
-                        alert.put("title", "#" + b.getBookingId() + " Â· " + (b.getFlavor() != null ? b.getFlavor() : "Bespoke Cake"));
-                        alert.put("desc", "Cake Studio Â· Requires pastry chef review");
+                        alert.put("title", "#" + b.getBookingId() + " · " + (b.getFlavor() != null ? b.getFlavor() : "Bespoke Cake"));
+                        alert.put("desc", "Cake Studio · Requires pastry chef review");
                         alert.put("actionLabel", "View in Queue");
                         alert.put("actionUrl", request.getContextPath() + "/manageBookings");
                         alertItems.add(alert);
@@ -259,7 +259,7 @@
                     act.put("icon", "receipt_long");
                     act.put("iconBg", "mc-act-icon-secondary");
                     act.put("title", "New Order #" + o.getOrderId() + " placed");
-                    act.put("sub", "Rs. " + String.format("%.2f", o.calculateFinalTotal()) + " Â· Status: " + (o.getStatus() != null ? o.getStatus() : "Active"));
+                    act.put("sub", "Rs. " + String.format("%.2f", o.calculateFinalTotal()) + " · Status: " + (o.getStatus() != null ? o.getStatus() : "Active"));
                     activityItems.add(act);
                 }
             }
@@ -277,7 +277,7 @@
                 java.util.Map<String, String> act = new java.util.HashMap<>();
                 act.put("icon", "star");
                 act.put("iconBg", "mc-act-icon-gold");
-                act.put("title", rev.getRating() + "â˜… Review submitted");
+                act.put("title", rev.getRating() + "★ Review submitted");
                 act.put("sub", rev.getComment() != null ? rev.getComment() : "Customer review");
                 activityItems.add(act);
             }
@@ -335,7 +335,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Maple &amp; Crumb Haute-PÃ¢tisserie â€” Operations Hub</title>
+    <title>Maple &amp; Crumb Haute-Pâtisserie — Operations Hub</title>
     <!-- Google Fonts: Playfair Display & Outfit -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -425,7 +425,7 @@
                                 </div>
                                 <div class="d-flex align-items-center gap-2 mt-2">
                                     <span class="small text-muted" style="font-size: 0.78rem;">
-                                        <strong class="text-secondary">${kpiTodayPickup}</strong> Pickup <span class="text-outline-variant mx-1">Â·</span> <strong class="text-secondary">${kpiTodayDelivery}</strong> Delivery
+                                        <strong class="text-secondary">${kpiTodayPickup}</strong> Pickup <span class="text-outline-variant mx-1">·</span> <strong class="text-secondary">${kpiTodayDelivery}</strong> Delivery
                                     </span>
                                 </div>
                             </div>
@@ -445,7 +445,7 @@
                                 </div>
                                 <div class="d-flex align-items-center gap-2 mt-2">
                                     <span class="small text-muted" style="font-size: 0.78rem;">
-                                        <strong class="text-danger">${kpiOutOfStockCount}</strong> Out of Stock <span class="text-outline-variant mx-1">Â·</span> <strong>${kpiBelowThresholdCount}</strong> Low
+                                        <strong class="text-danger">${kpiOutOfStockCount}</strong> Out of Stock <span class="text-outline-variant mx-1">·</span> <strong>${kpiBelowThresholdCount}</strong> Low
                                     </span>
                                 </div>
                             </div>
@@ -488,7 +488,7 @@
                                         </h2>
                                         <div class="d-flex align-items-center gap-2">
                                             <span class="small text-muted">Daily Sales Total (LKR)</span>
-                                            <span class="text-outline-variant">â€¢</span>
+                                            <span class="text-outline-variant">•</span>
                                             <span class="small text-secondary fw-bold">Rs. <fmt:formatNumber value="${avgDailyRevenue}" minFractionDigits="2"/> daily avg</span>
                                         </div>
                                     </div>
@@ -497,7 +497,7 @@
                                             Last 7 Days
                                         </div>
                                         <a href="${pageContext.request.contextPath}/viewOrders?view=manage" class="small fw-semibold text-secondary text-decoration-none">
-                                            Manage Orders â†’
+                                            Manage Orders →
                                         </a>
                                     </div>
                                 </div>
@@ -648,7 +648,7 @@
                                         </h2>
                                     </div>
                                     <a class="small fw-semibold text-secondary text-decoration-none" href="${pageContext.request.contextPath}/viewReviews">
-                                        All Reviews (${kpiReviewCount}) â†’
+                                        All Reviews (${kpiReviewCount}) →
                                     </a>
                                 </div>
 
@@ -727,7 +727,7 @@
                                         </h2>
                                     </div>
                                     <a class="small fw-semibold text-secondary text-decoration-none" href="${pageContext.request.contextPath}/manageProducts">
-                                        Full Catalogue â†’
+                                        Full Catalogue →
                                     </a>
                                 </div>
 
@@ -795,7 +795,7 @@
                                         </h2>
                                     </div>
                                     <a class="small fw-semibold text-secondary text-decoration-none" href="${pageContext.request.contextPath}/kitchenQueue">
-                                        Kitchen Board â†’
+                                        Kitchen Board →
                                     </a>
                                 </div>
 
@@ -813,7 +813,7 @@
                                                                 ${not empty t.customerName ? t.customerName : 'Walk-in Patron'}
                                                             </div>
                                                             <div class="text-muted text-truncate" style="font-size: 0.72rem;">
-                                                                #${t.referenceCode} Â· ${t.taskType == 'CUSTOM_CAKE' ? t.customCakeFlavor : 'Pastry Batch'}
+                                                                #${t.referenceCode} · ${t.taskType == 'CUSTOM_CAKE' ? t.customCakeFlavor : 'Pastry Batch'}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -847,7 +847,7 @@
                                 </div>
                             </div>
                             <div class="mt-4 pt-3 border-top d-flex align-items-center justify-content-end small text-muted" style="border-color: rgba(211, 195, 190, 0.25) !important; font-size: 0.72rem;">
-                                <a href="${pageContext.request.contextPath}/kitchenQueue" class="text-secondary fw-bold text-decoration-none">Full Production Schedule â†’</a>
+                                <a href="${pageContext.request.contextPath}/kitchenQueue" class="text-secondary fw-bold text-decoration-none">Full Production Schedule →</a>
                             </div>
                         </div>
                     </section>
