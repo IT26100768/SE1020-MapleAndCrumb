@@ -90,7 +90,6 @@
                 </div>
                 <div>
                     <h1 class="mc-sidebar-brand-title">Maple &amp; Crumb</h1>
-                    <p class="mc-sidebar-brand-sub">Haute-Pâtisserie Atelier</p>
                 </div>
             </div>
             <!-- Mobile Close Button -->

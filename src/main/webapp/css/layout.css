@@ -184,8 +184,8 @@
     }
 }
 .maple-brand-link {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none !important;
     color: inherit;
 }
@@ -195,20 +195,11 @@
     font-weight: 600;
     letter-spacing: -0.01em;
     color: #070100;
-    line-height: 1.1;
+    line-height: 1.2;
     transition: color 0.2s ease;
 }
 .maple-brand-link:hover .maple-brand-name {
     color: #865225;
-}
-.maple-brand-sub {
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #865225;
-    margin-top: 2px;
-    font-weight: 500;
 }
 .maple-desktop-nav {
     display: none;
@@ -641,14 +632,6 @@
     font-weight: 600;
     color: #070100;
     line-height: 1.2;
-    margin: 0;
-}
-
-.mc-sidebar-brand-sub {
-    font-family: var(--mc-font-sans, 'Outfit', 'Plus Jakarta Sans', sans-serif);
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: #6a5a54;
     margin: 0;
 }
 
