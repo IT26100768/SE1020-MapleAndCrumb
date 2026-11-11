@@ -1,3 +1,13 @@
+/* ==========================================================================
+   Maple & Crumb Bakery - Layout Architecture
+   File: layout.css
+   Scope: Navigation, Headers, Footers, Admin Operations Shell & Breakpoints
+   Framework: Bootstrap 5.3.3 + Custom Tokens
+   ========================================================================== */
+
+/* ==========================================================================
+   3. Modern Navigation Bar
+   ========================================================================== */
 .maple-navbar {
     background: rgba(250, 248, 245, 0.95) !important;
     backdrop-filter: blur(12px);
@@ -142,32 +152,10 @@
     box-shadow: 0 0 0 3px rgba(163, 72, 47, 0.15);
 }
 
-.maple-top-ticker {
-    background-color: #070100;
-    color: #fdf9f1;
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    font-weight: 500;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    text-align: center;
-    line-height: 1.4;
-}
 
-.maple-ticker-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #fdb882;
-    flex-shrink: 0;
-}
-
+/* ==========================================================================
+   3.1 Global Header & Navigation (Unified from navbar.jsp)
+   ========================================================================== */
 .maple-header-wrap {
     position: sticky;
     top: 0;
@@ -179,7 +167,6 @@
     box-shadow: 0 1px 4px rgba(43, 24, 16, 0.05);
     font-family: 'Outfit', sans-serif;
 }
-
 .maple-header-container {
     max-width: 1440px;
     margin: 0 auto;
@@ -191,20 +178,17 @@
     gap: 1.5rem;
     box-sizing: border-box;
 }
-
 @media (min-width: 1024px) {
     .maple-header-container {
         padding: 0 3rem;
     }
 }
-
 .maple-brand-link {
     display: flex;
     flex-direction: column;
     text-decoration: none !important;
     color: inherit;
 }
-
 .maple-brand-name {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 22px;
@@ -214,11 +198,9 @@
     line-height: 1.1;
     transition: color 0.2s ease;
 }
-
 .maple-brand-link:hover .maple-brand-name {
     color: #865225;
 }
-
 .maple-brand-sub {
     font-family: 'Outfit', sans-serif;
     font-size: 11px;
@@ -228,19 +210,16 @@
     margin-top: 2px;
     font-weight: 500;
 }
-
 .maple-desktop-nav {
     display: none;
     align-items: center;
     gap: 2.25rem;
 }
-
 @media (min-width: 860px) {
     .maple-desktop-nav {
         display: flex;
     }
 }
-
 .maple-nav-anchor {
     font-family: 'Outfit', sans-serif;
     font-size: 14px;
@@ -253,24 +232,20 @@
     display: inline-flex;
     align-items: center;
 }
-
 .maple-nav-anchor:hover {
     color: #070100;
 }
-
 .maple-nav-anchor.active {
     color: #865225;
     font-weight: 600;
     border-bottom: 2px solid #865225;
 }
-
 .maple-utility-group {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     position: relative;
 }
-
 .maple-icon-btn {
     width: 40px;
     height: 40px;
@@ -286,12 +261,10 @@
     transition: background-color 0.2s ease, color 0.2s ease;
     position: relative;
 }
-
 .maple-icon-btn:hover {
     background-color: #ece8e0;
     color: #070100;
 }
-
 .maple-cart-pill {
     position: absolute;
     top: -2px;
@@ -307,13 +280,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
-
 .maple-user-wrapper {
     position: relative;
 }
-
 .maple-user-btn {
     display: none;
     align-items: center;
@@ -330,18 +301,15 @@
     text-decoration: none !important;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 @media (min-width: 640px) {
     .maple-user-btn {
         display: inline-flex;
     }
 }
-
 .maple-user-btn:hover {
     background-color: #f7f3eb;
     color: #865225;
 }
-
 .maple-order-cta {
     display: none;
     background-color: #2b1810;
@@ -355,19 +323,16 @@
     transition: background-color 0.2s ease, transform 0.15s ease;
     box-shadow: 0 2px 6px rgba(43, 24, 16, 0.1);
 }
-
 @media (min-width: 640px) {
     .maple-order-cta {
         display: inline-flex;
         align-items: center;
     }
 }
-
 .maple-order-cta:hover {
     background-color: #865225;
     transform: translateY(-1px);
 }
-
 .maple-mobile-btn {
     width: 40px;
     height: 40px;
@@ -380,18 +345,15 @@
     border: none;
     cursor: pointer;
 }
-
 @media (min-width: 860px) {
     .maple-mobile-btn {
         display: none;
     }
 }
-
 .maple-mobile-btn:hover {
     background-color: #ece8e0;
     color: #070100;
 }
-
 .maple-dropdown-panel {
     display: none;
     position: absolute;
@@ -406,12 +368,10 @@
     z-index: 1050;
     text-align: left;
 }
-
 .maple-dropdown-header {
     padding: 10px 16px;
     border-bottom: 1px solid rgba(211, 195, 190, 0.3);
 }
-
 .maple-dropdown-item {
     display: flex;
     align-items: center;
@@ -422,7 +382,6 @@
     text-decoration: none !important;
     transition: background-color 0.15s ease, color 0.15s ease;
 }
-
 .maple-dropdown-item:hover,
 .maple-dropdown-item:focus,
 .maple-dropdown-item:focus-visible {
@@ -430,11 +389,9 @@
     color: #070100;
     outline: none;
 }
-
 .maple-dropdown-item.danger {
     color: #ba1a1a;
 }
-
 .maple-dropdown-item.danger:hover,
 .maple-dropdown-item.danger:focus,
 .maple-dropdown-item.danger:focus-visible {
@@ -442,13 +399,11 @@
     color: #ba1a1a;
     outline: none;
 }
-
 .maple-dropdown-divider {
     height: 1px;
     background-color: rgba(211, 195, 190, 0.3);
     margin: 6px 0;
 }
-
 .maple-mobile-drawer {
     display: none;
     background-color: #fdf9f1;
@@ -456,7 +411,6 @@
     padding: 16px 24px 20px 24px;
     font-family: 'Outfit', sans-serif;
 }
-
 .maple-mobile-drawer a {
     display: block;
     padding: 10px 0;
@@ -466,15 +420,12 @@
     font-weight: 500;
     border-bottom: 1px solid rgba(211, 195, 190, 0.2);
 }
-
 .maple-mobile-drawer a:last-child {
     border-bottom: none;
 }
-
 .maple-mobile-drawer a:hover {
     color: #865225;
 }
-
 .maple-mobile-cta {
     margin-top: 12px;
     display: block;
@@ -529,6 +480,10 @@
     color: var(--color-primary);
 }
 
+
+/* ==========================================================================
+   14.1 Global Footer (Unified from footer.jsp)
+   ========================================================================== */
 .maple-footer-wrap {
     background-color: #f1ede6;
     border-top: 1px solid rgba(211, 195, 190, 0.4);
@@ -537,7 +492,6 @@
     margin-top: auto;
     width: 100%;
 }
-
 .maple-footer-container {
     max-width: 1440px;
     margin: 0 auto;
@@ -549,14 +503,12 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
-
 @media (min-width: 768px) {
     .maple-footer-container {
         flex-direction: row;
         padding: 3rem 3rem;
     }
 }
-
 .maple-footer-brand {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 22px;
@@ -565,18 +517,15 @@
     text-decoration: none !important;
     letter-spacing: -0.01em;
 }
-
 .maple-footer-brand:hover {
     color: #865225;
 }
-
 .maple-footer-sub {
     font-size: 13px;
     color: #4f4440;
     margin-top: 4px;
     line-height: 1.5;
 }
-
 .maple-footer-links {
     display: flex;
     flex-wrap: wrap;
@@ -585,18 +534,15 @@
     gap: 1.5rem;
     font-size: 14px;
 }
-
 .maple-footer-link {
     color: #4f4440;
     text-decoration: none !important;
     font-weight: 500;
     transition: color 0.2s ease;
 }
-
 .maple-footer-link:hover {
     color: #070100;
 }
-
 .maple-footer-socials {
     display: flex;
     align-items: center;
@@ -605,21 +551,22 @@
     color: #4f4440;
     font-weight: 500;
 }
-
 .maple-footer-social-link {
     color: #4f4440;
     text-decoration: none !important;
     transition: color 0.2s ease;
 }
-
 .maple-footer-social-link:hover {
     color: #070100;
 }
-
 .maple-footer-dot {
     color: rgba(211, 195, 190, 0.8);
 }
 
+
+/* ==========================================================================
+   Admin Operations Suite - Persistent Left Navigation Layout & Sidebar
+   ========================================================================== */
 .mc-admin-layout-wrapper {
     display: flex !important;
     flex-direction: row !important;
@@ -811,14 +758,8 @@
 }
 
 @keyframes mcPulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.4;
-        transform: scale(0.85);
-    }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 .mc-sidebar-gateway {
@@ -905,21 +846,21 @@
     }
 }
 
+/* ==========================================================================
+   15. Responsive Adaptations & Print Styles
+   ========================================================================== */
 @media (max-width: 1024px) {
     .bakery-hero h1 {
         font-size: 3.5rem;
     }
-
     .hero-copy {
         padding: 56px 6%;
     }
-
     .bakery-values {
         grid-template-columns: repeat(2, 1fr);
         padding: 18px 5%;
         gap: 14px;
     }
-
     .collection-grid {
         gap: 20px;
     }
@@ -929,45 +870,36 @@
     .bakery-hero {
         grid-template-columns: 1fr;
     }
-
     .hero-copy {
         padding: 44px 6%;
     }
-
     .bakery-hero h1 {
         font-size: clamp(2.4rem, 8vw, 3.2rem);
     }
-
     .hero-photo {
         min-height: 380px;
     }
-
     .bakery-values {
         grid-template-columns: 1fr 1fr;
         padding: 18px 5%;
     }
-
     .bakery-values span {
         justify-content: flex-start;
     }
-
     .collection-grid {
         grid-template-columns: 1fr;
     }
-
     .cake-feature,
     .bakery-story {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 48px 6%;
     }
-
     .section-heading {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-
     .order-summary-box {
         position: static;
     }
@@ -981,6 +913,8 @@
     }
 }
 
+
+/* Layout Utilities */
 .maple-section-divider {
     border-color: rgba(43, 24, 16, 0.08) !important;
 }

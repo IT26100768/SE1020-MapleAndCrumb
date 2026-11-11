@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product â€” Maple &amp; Crumb</title>
+    <title>Edit Product — Maple &amp; Crumb</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,10 +131,10 @@
                                             <div class="col-md-6">
                                                 <label for="cakeSize" class="form-label small fw-semibold" style="color: var(--maple-dark-800, #2b1810);">Size (Inches)</label>
                                                 <select id="cakeSize" name="sizeInches" class="form-select form-control-maple">
-                                                    <option value="6" ${sizeInches == 6 ? 'selected' : ''}>6-inch (Serves 6â€“8)</option>
-                                                    <option value="8" ${sizeInches == 8 ? 'selected' : ''}>8-inch (Serves 10â€“12)</option>
-                                                    <option value="10" ${sizeInches == 10 ? 'selected' : ''}>10-inch (Serves 14â€“16)</option>
-                                                    <option value="12" ${sizeInches == 12 ? 'selected' : ''}>12-inch (Serves 18â€“22)</option>
+                                                    <option value="6" ${sizeInches == 6 ? 'selected' : ''}>6-inch (Serves 6–8)</option>
+                                                    <option value="8" ${sizeInches == 8 ? 'selected' : ''}>8-inch (Serves 10–12)</option>
+                                                    <option value="10" ${sizeInches == 10 ? 'selected' : ''}>10-inch (Serves 14–16)</option>
+                                                    <option value="12" ${sizeInches == 12 ? 'selected' : ''}>12-inch (Serves 18–22)</option>
                                                 </select>
                                             </div>
                                         </div>

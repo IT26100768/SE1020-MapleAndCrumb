@@ -13,6 +13,12 @@ public final class ParamUtil {
         if (request == null || paramName == null) {
             return defaultValue;
         }
+        if (request.getCharacterEncoding() == null) {
+            try {
+                request.setCharacterEncoding("UTF-8");
+            } catch (Exception ignored) {
+            }
+        }
         String value = request.getParameter(paramName);
         if (value == null) {
             return defaultValue;
