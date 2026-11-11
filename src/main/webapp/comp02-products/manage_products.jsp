@@ -116,9 +116,11 @@
                         <input type="text" id="adminTableSearch" class="form-control form-control-maple border-start-0 ps-1" placeholder="Filter by product name, ID or category..." onkeyup="filterAdminTable()" aria-label="Search product table" style="border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0; border-color: rgba(43,24,16,0.15);">
                     </div>
                 </div>
-                <div class="col-auto text-muted small d-flex align-items-center gap-1">
-                    <span class="material-symbols-outlined fs-6" style="color: var(--maple-gold-500, #865225);">inventory</span>
-                    <span>Real-time catalogue inventory</span>
+                <div class="col-auto d-flex flex-wrap gap-2" role="group" aria-label="Filter Products by Category">
+                    <button type="button" class="btn btn-sm btn-maple-primary rounded-pill px-3 active" aria-pressed="true" id="productFilterAll" onclick="setProductCategoryFilter('ALL', this)">All</button>
+                    <button type="button" class="btn btn-sm btn-maple-secondary rounded-pill px-3" aria-pressed="false" id="productFilterCakes" onclick="setProductCategoryFilter('Cake', this)">Cakes</button>
+                    <button type="button" class="btn btn-sm btn-maple-secondary rounded-pill px-3" aria-pressed="false" id="productFilterPastries" onclick="setProductCategoryFilter('Pastry', this)">Pastries</button>
+                    <button type="button" class="btn btn-sm btn-maple-secondary rounded-pill px-3" aria-pressed="false" id="productFilterBreads" onclick="setProductCategoryFilter('Bread', this)">Breads</button>
                 </div>
             </div>
 
@@ -140,7 +142,7 @@
                             <c:choose>
                                 <c:when test="${not empty products}">
                                     <c:forEach var="prod" items="${products}">
-                                        <tr class="product-row" style="border-bottom: 1px solid rgba(43, 24, 16, 0.06);">
+                                        <tr class="product-row" data-category="${prod.category}" style="border-bottom: 1px solid rgba(43, 24, 16, 0.06);">
                                             <td class="ps-4 fw-semibold text-secondary prod-id font-monospace small">#${prod.productId}</td>
                                             <td class="prod-info py-3">
                                                 <div class="fw-bold prod-name" style="color: var(--maple-dark-900, #070100); font-size: 0.95rem;">${prod.name}</div>
@@ -176,6 +178,18 @@
                                             </td>
                                         </tr>
                                     </c:forEach>
+                                    <tr id="noProductsFoundRow" class="d-none">
+                                        <td colspan="6" class="text-center py-5">
+                                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 56px; height: 56px; background: rgba(134,82,37,0.08); color: var(--maple-gold-500, #865225);">
+                                                <span class="material-symbols-outlined fs-2">search_off</span>
+                                            </div>
+                                            <h5 class="fw-semibold text-dark mb-1 font-playfair">No Matching Products</h5>
+                                            <p class="text-muted small mb-3">No products match your current search or category filter.</p>
+                                            <button type="button" class="btn btn-sm btn-maple-secondary" onclick="resetProductFilters()">
+                                                <span class="material-symbols-outlined fs-6 align-middle me-1">replay</span> Reset Filters
+                                            </button>
+                                        </td>
+                                    </tr>
                                 </c:when>
                                 <c:otherwise>
                                     <tr>

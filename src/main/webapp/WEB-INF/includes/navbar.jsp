@@ -35,9 +35,6 @@
       <span class="maple-brand-name">
         Maple &amp; Crumb
       </span>
-      <span class="maple-brand-sub">
-        Artisanal Pâtisserie &amp; Bespoke Cakes
-      </span>
     </a>
 
     <!-- Desktop Navigation Links -->

@@ -129,7 +129,6 @@
                                 <option value="Spiced Carrot & Maple Pecan" ${param.flavor == 'Spiced Carrot & Maple Pecan' ? 'selected' : ''}>Spiced Carrot &amp; Maple Pecan</option>
                                 <option value="Salted Caramel & Espresso" ${param.flavor == 'Salted Caramel & Espresso' ? 'selected' : ''}>Salted Caramel &amp; Espresso</option>
                             </select>
-                            <div class="form-text small text-muted">All sponges made fresh with cultured cream and slow-churned butter.</div>
                         </div>
 
                         <div class="col-md-6">
@@ -140,7 +139,6 @@
                                 <option value="10" ${param.size == '10' ? 'selected' : ''}>10-Inch (Serves 14 - 18 Guests) &mdash; Rs. 8,500.00</option>
                                 <option value="12" ${param.size == '12' ? 'selected' : ''}>12-Inch (Serves 20 - 26 Guests) &mdash; Rs. 11,000.00</option>
                             </select>
-                            <div class="form-text small text-muted">Tiered artisanal base rates starting from Rs. 4,500.00.</div>
                         </div>
 
                         <div class="col-md-6">
@@ -160,7 +158,6 @@
                             <label for="pickupDate" class="form-label small fw-semibold" style="color: var(--maple-dark-800, #2b1810);">Collection Date <span class="text-danger">*</span></label>
                             <input type="date" id="pickupDate" name="pickupDate" class="form-control form-control-maple" required>
                             <div class="invalid-feedback">Please select a pickup date.</div>
-                            <div class="form-text small text-muted">Requires minimum 24 hours advance baking notice.</div>
                         </div>
 
                         <div class="col-md-6">
@@ -175,7 +172,6 @@
                         <div class="col-12">
                             <label for="customMessage" class="form-label small fw-semibold" style="color: var(--maple-dark-800, #2b1810);">Piped Royal Icing Inscription (Optional)</label>
                             <input type="text" id="customMessage" name="customMessage" class="form-control form-control-maple" maxlength="60" placeholder="e.g. Happy 30th Birthday Eleanor! ✨" value="<c:out value="${param.message}" />">
-                            <div class="form-text small text-muted">Piped with pure Madagascar vanilla royal icing (max 60 characters).</div>
                         </div>
 
                         <div class="col-12">

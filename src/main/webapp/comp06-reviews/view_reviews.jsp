@@ -127,7 +127,7 @@
     <!-- Metrics Summary & Rating Histogram Row -->
     <div class="row g-3 mb-5">
         <!-- Average Score Card -->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-5">
             <div class="card card-maple maple-panel-card p-4 shadow-sm h-100 border-0 text-center d-flex flex-column justify-content-center">
                 <span class="text-muted smaller text-uppercase fw-semibold" style="font-size: 0.72rem; letter-spacing: 0.08em;">Average Satisfaction</span>
                 <div class="display-3 fw-bold font-playfair my-2" style="color: var(--maple-dark-900, #070100);">${averageRating}</div>
@@ -141,7 +141,7 @@
         </div>
 
         <!-- Rating Distribution Histogram -->
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-md-7">
             <div class="card card-maple maple-panel-card p-4 shadow-sm h-100 border-0 d-flex flex-column justify-content-center">
                 <span class="text-muted smaller text-uppercase fw-semibold mb-3" style="font-size: 0.72rem; letter-spacing: 0.08em;">Rating Distribution</span>
 
@@ -188,24 +188,6 @@
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct1Star}%;" role="progressbar" aria-valuenow="${pct1Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <span class="text-muted text-end" style="width: 36px;">${count1Star}</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trust Guarantee Card -->
-        <div class="col-12 col-md-3">
-            <div class="card card-maple maple-panel-card p-4 shadow-sm h-100 border-0 d-flex flex-column justify-content-between" style="background: linear-gradient(135deg, #f7f3ed, #fdf9f1);">
-                <div>
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 46px; height: 46px; background: rgba(134, 82, 37, 0.1); color: var(--maple-gold-600, #6d411b);">
-                        <span class="material-symbols-outlined fs-4">verified</span>
-                    </div>
-                    <h5 class="font-playfair text-dark fs-5 fw-bold mb-2" style="font-family: var(--font-playfair, 'Playfair Display', Georgia, serif); color: var(--maple-dark-900, #070100);">Authentic Feedback</h5>
-                    <p class="text-muted small mb-0">Every reflection is submitted by registered patrons and inspected to ensure authentic culinary experiences.</p>
-                </div>
-                <div class="pt-3 border-top mt-3" style="border-color: rgba(43, 24, 16, 0.08) !important;">
-                    <a href="${pageContext.request.contextPath}/menu" class="btn btn-sm btn-maple-secondary w-100 rounded-3 px-3 py-2 d-inline-flex align-items-center justify-content-center gap-1">
-                        <span class="material-symbols-outlined fs-6">storefront</span> Browse Menu
-                    </a>
                 </div>
             </div>
         </div>
@@ -476,7 +458,7 @@
     <!-- Metrics Summary & Rating Histogram Row -->
     <div class="row g-3 mb-5">
         <!-- Average Score Card -->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-5">
             <div class="card card-maple maple-panel-card p-4 shadow-sm h-100 border-0 text-center d-flex flex-column justify-content-center">
                 <span class="text-muted smaller text-uppercase fw-semibold" style="font-size: 0.72rem; letter-spacing: 0.08em;">Average Satisfaction</span>
                 <div class="display-3 fw-bold font-playfair my-2" style="color: var(--maple-dark-900, #070100);">${averageRating}</div>
@@ -490,7 +472,7 @@
         </div>
 
         <!-- Rating Distribution Histogram -->
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-md-7">
             <div class="card card-maple maple-panel-card p-4 shadow-sm h-100 border-0 d-flex flex-column justify-content-center">
                 <span class="text-muted smaller text-uppercase fw-semibold mb-3" style="font-size: 0.72rem; letter-spacing: 0.08em;">Rating Distribution</span>
 
@@ -537,24 +519,6 @@
                         <div class="progress-bar" style="background-color: #c5a059; width: ${pct1Star}%;" role="progressbar" aria-valuenow="${pct1Star}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <span class="text-muted text-end" style="width: 36px;">${count1Star}</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trust Guarantee Card -->
-        <div class="col-12 col-md-3">
-            <div class="card card-maple maple-panel-card p-4 shadow-sm h-100 border-0 d-flex flex-column justify-content-between" style="background: linear-gradient(135deg, #f7f3ed, #fdf9f1);">
-                <div>
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 46px; height: 46px; background: rgba(134, 82, 37, 0.1); color: var(--maple-gold-600, #6d411b);">
-                        <span class="material-symbols-outlined fs-4">verified</span>
-                    </div>
-                    <h5 class="font-playfair text-dark fs-5 fw-bold mb-2" style="font-family: var(--font-playfair, 'Playfair Display', Georgia, serif); color: var(--maple-dark-900, #070100);">Authentic Feedback</h5>
-                    <p class="text-muted small mb-0">Every reflection is submitted by registered patrons and inspected to ensure authentic culinary experiences.</p>
-                </div>
-                <div class="pt-3 border-top mt-3" style="border-color: rgba(43, 24, 16, 0.08) !important;">
-                    <a href="${pageContext.request.contextPath}/menu" class="btn btn-sm btn-maple-secondary w-100 rounded-3 px-3 py-2 d-inline-flex align-items-center justify-content-center gap-1">
-                        <span class="material-symbols-outlined fs-6">storefront</span> Browse Menu
-                    </a>
                 </div>
             </div>
         </div>

@@ -592,10 +592,6 @@
                                     </c:choose>
                                 </div>
                             </div>
-                            <div class="mt-4 pt-3 border-top d-flex align-items-center justify-content-between small text-muted" style="border-color: rgba(211, 195, 190, 0.25) !important; font-size: 0.72rem;">
-                                <span>Production &amp; Inventory Watchdog</span>
-                                <span class="material-symbols-outlined text-success" style="font-size: 16px;">check_circle</span>
-                            </div>
                         </div>
                     </section>
 
