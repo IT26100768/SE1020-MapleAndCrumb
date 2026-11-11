@@ -44,13 +44,52 @@
 
 
     // 2. Product Catalogue Admin Table Filter (manage_products.jsp)
+    let productActiveCategory = 'ALL';
+
+    function setProductCategoryFilter(category, btn) {
+        productActiveCategory = category;
+        const filterGroup = btn ? btn.closest('[role="group"]') : document.querySelector('[aria-label="Filter Products by Category"]');
+        const buttons = filterGroup ? filterGroup.querySelectorAll('.btn') : document.querySelectorAll('[aria-label="Filter Products by Category"] .btn');
+        buttons.forEach(function (b) {
+            b.classList.remove('btn-maple-primary', 'active');
+            b.classList.add('btn-maple-secondary');
+            b.setAttribute('aria-pressed', 'false');
+        });
+        if (btn) {
+            btn.classList.remove('btn-maple-secondary');
+            btn.classList.add('btn-maple-primary', 'active');
+            btn.setAttribute('aria-pressed', 'true');
+        }
+        filterAdminTable();
+    }
 
     function filterAdminTable() {
         const query = (document.getElementById('adminTableSearch')?.value || '').toLowerCase().trim();
-        document.querySelectorAll('#adminProductTable tbody tr.product-row').forEach(function (row) {
+        const rows = document.querySelectorAll('#adminProductTable tbody tr.product-row');
+        let visibleCount = 0;
+        rows.forEach(function (row) {
             const text = row.innerText.toLowerCase();
-            row.style.display = (!query || text.includes(query)) ? '' : 'none';
+            const cat = (row.getAttribute('data-category') || '').trim().toLowerCase();
+            const matchesQuery = !query || text.includes(query);
+            const matchesCategory = (productActiveCategory === 'ALL' || cat === productActiveCategory.toLowerCase());
+            if (matchesQuery && matchesCategory) {
+                row.style.display = '';
+                visibleCount++;
+            } else {
+                row.style.display = 'none';
+            }
         });
+        const noResults = document.getElementById('noProductsFoundRow');
+        if (noResults) {
+            noResults.classList.toggle('d-none', visibleCount > 0 || rows.length === 0);
+        }
+    }
+
+    function resetProductFilters() {
+        const searchInput = document.getElementById('adminTableSearch');
+        if (searchInput) searchInput.value = '';
+        const allBtn = document.getElementById('productFilterAll');
+        setProductCategoryFilter('ALL', allBtn);
     }
 
 
@@ -272,7 +311,9 @@
     window.MapleAdmin = MapleAdmin;
     window.toggleCategoryFields = toggleCategoryFields;
     window.toggleAdminTier = toggleAdminTier;
+    window.setProductCategoryFilter = setProductCategoryFilter;
     window.filterAdminTable = filterAdminTable;
+    window.resetProductFilters = resetProductFilters;
     window.setStatusFilter = setStatusFilter;
     window.filterBookingsTable = filterBookingsTable;
     window.resetBookingFilters = resetBookingFilters;
