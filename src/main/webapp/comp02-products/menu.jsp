@@ -51,7 +51,7 @@
             Our Bakery Catalogue
         </h1>
         <p class="page-subtitle text-center mx-auto text-muted mb-4" style="max-width: 580px; font-size: 1.05rem; line-height: 1.6;">
-            Handcrafted sourdoughs, artisanal viennoiserie, and signature celebration cakes baked fresh with heritage grains and slow fermentation.
+            Explore our freshly baked breads, pastries, and celebration cakes.
         </p>
 
         <c:if test="${not empty sessionScope.cart && sessionScope.cart.size() > 0}">
