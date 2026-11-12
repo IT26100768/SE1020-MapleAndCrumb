@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Maple &amp; Crumb | Artisanal Pâtisserie &amp; Bespoke Cakes</title>
-  <meta name="description" content="Discover freshly baked Viennoiserie favourites and create your perfect custom celebration cake for every special occasion, handcrafted with heirloom techniques in Colombo.">
+  <meta name="description" content="Enjoy freshly baked pastries and order a custom cake for your special occasions.">
 
   <!-- Google Fonts: Playfair Display & Outfit -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -158,7 +158,7 @@
 
           <!-- Supporting Editorial Text -->
           <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed">
-            Discover freshly baked Viennoiserie favourites and create your perfect custom celebration cake for every special occasion, handcrafted with heirloom techniques in Colombo.
+            Enjoy freshly baked pastries and order a custom cake for your special occasions.
           </p>
 
           <!-- Primary & Secondary CTA Cluster -->
@@ -210,9 +210,9 @@
               </div>
               <div>
                 <p class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Maple &amp; Crumb Specialties</p>
-                <p class="font-headline-sm text-[18px] font-medium text-primary">Signature Pistachio &amp; Fig</p>
+                <p class="font-headline-sm text-[18px] font-medium text-primary">Pistachio &amp; Fig Cake</p>
               </div>
-              <a aria-label="View Signature Pistachio and Fig custom cake" class="ml-auto w-9 h-9 rounded-full bg-surface-container-high hover:bg-secondary hover:text-on-secondary flex items-center justify-center transition-colors" href="${pageContext.request.contextPath}/bookCake">
+              <a aria-label="View Pistachio and Fig Cake custom cake" class="ml-auto w-9 h-9 rounded-full bg-surface-container-high hover:bg-secondary hover:text-on-secondary flex items-center justify-center transition-colors" href="${pageContext.request.contextPath}/bookCake">
                 <span class="material-symbols-outlined text-[18px]">north_east</span>
               </a>
             </div>
@@ -251,11 +251,11 @@
 
       <!-- 4-Product Grid with LKR (Rs.) Pricing -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="productGrid">
-        <!-- Product 1: Pistachio & Fig Celebration Cake -->
+        <!-- Product 1: Pistachio & Fig Cake -->
         <article data-cat="cakes" class="product-item bg-surface-container-lowest rounded-DEFAULT border border-outline-variant/30 overflow-hidden shadow-luxury-card hover:shadow-luxury-hover hover:border-secondary transition-all flex flex-col group">
           <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
             <img
-              alt="Pistachio &amp; Fig Celebration Cake"
+              alt="Pistachio &amp; Fig Cake"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl2Sw8sGMYM-MVWSYIOY-TdVgHJDH-jUq_EO-YyVihQyF2pjoABe6EYOjmTROVCSnc5KpgG49C0iDxniB9z4nYL2dKCc_RTtOTWxWZhZhxOSYlN7KeBhrfomhbkivwFXYLGm2mEf2pgdGFcoPC3K0EwBGzE8xzG4ryh25XiP80-MwfhKS4gRozME8s_JOs7-mK93a5Su3czxAbtJ-LvTzLJbhsDRxlCo4SiMr8LDMBafDbRf8SNcBbQA"
               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80';"
@@ -264,7 +264,7 @@
           <div class="p-6 flex flex-col flex-grow">
             <!-- Title -->
             <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-1">
-              Pistachio &amp; Fig Celebration Cake
+              Pistachio &amp; Fig Cake
             </h3>
             <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 flex-grow line-clamp-2">
               Layered pistachio sponge, organic fig compote, and whipped vanilla mascarpone.
@@ -283,11 +283,11 @@
           </div>
         </article>
 
-        <!-- Product 2: Chocolate Croissant & Danish Duo -->
+        <!-- Product 2: Chocolate Croissant & Danish Box -->
         <article data-cat="pastries" class="product-item bg-surface-container-lowest rounded-DEFAULT border border-outline-variant/30 overflow-hidden shadow-luxury-card hover:shadow-luxury-hover hover:border-secondary transition-all flex flex-col group">
           <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
             <img
-              alt="Artisanal Chocolate Croissant &amp; Danish Duo"
+              alt="Chocolate Croissant &amp; Danish Box"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFaKS2FKGZiKQa7E6CsleGU_sezOlGIykG0dvXUscugjlynHXv7E1TJqiP-wDZ9T0XDNg9Ue_YpdwLwXdlEeQ2TLRALdhyL5nxYXO-2YdnqL0cRXJAl4WxfTIRCgh8nobnzcV8lqydb2o9e1to1oUcha3433BxW6PtReDm-Cxicw8tYyuSX9wo6nwDSxVECpXaNc4nFBjVU7SAJEHLjX_ST2KHpyeaOBFPO8KS99NVhuUT_nWio-M4xg"
               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80';"
@@ -296,7 +296,7 @@
           <div class="p-6 flex flex-col flex-grow">
             <!-- Title -->
             <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-1">
-              Chocolate Croissant &amp; Danish Duo
+              Chocolate Croissant &amp; Danish Box
             </h3>
             <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 flex-grow line-clamp-2">
               72-layer laminated pastry, Valrhona 70% dark batons, and glazed apricot preserve.
@@ -315,11 +315,11 @@
           </div>
         </article>
 
-        <!-- Product 3: Country Sourdough Bread -->
+        <!-- Product 3: Sourdough Bread -->
         <article data-cat="pastries" class="product-item bg-surface-container-lowest rounded-DEFAULT border border-outline-variant/30 overflow-hidden shadow-luxury-card hover:shadow-luxury-hover hover:border-secondary transition-all flex flex-col group">
           <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
             <img
-              alt="Slow-Fermented Country Sourdough Bread"
+              alt="Sourdough Bread"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBUcm2xO6sLRREUqvsg3APr4x3OYdAGYxO4DtU9QzWluojTmaCXPsQtQLPMFgJoqznPR2RVmdE5-zu6AKHv23VkMW6kuMqN3n92sfXJMURdQlRZro7rktVjLtzqxrsSrP5EVtDSNvh4UlI-G3-5UL6azLeH5CZtmiwyoOzJ47y8haL6YhRxaSaI8X96e0Khw1QxSpGRvydE5O_Ga_AugyDm4jwwlNujPeF8EcfMtz4Un1sttcCrSda1g"
               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80';"
@@ -328,7 +328,7 @@
           <div class="p-6 flex flex-col flex-grow">
             <!-- Title -->
             <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-1">
-              Country Sourdough Bread
+              Sourdough Bread
             </h3>
             <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 flex-grow line-clamp-2">
               36-hour cold ferment, stoneground wheat, and caramelized crust.
@@ -347,11 +347,11 @@
           </div>
         </article>
 
-        <!-- Product 4: Vanilla & Berry Cake -->
+        <!-- Product 4: Vanilla Berry Cake -->
         <article data-cat="cakes" class="product-item bg-surface-container-lowest rounded-DEFAULT border border-outline-variant/30 overflow-hidden shadow-luxury-card hover:shadow-luxury-hover hover:border-secondary transition-all flex flex-col group">
           <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
             <img
-              alt="Tahitian Vanilla &amp; Berry Cake"
+              alt="Vanilla Berry Cake"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKjJPMTCiggsv3RMPnFz-GUhr507VMH0JYkX2qv1LTBKapU1H3cVAeFbxHhGmHFPcEI2qevdqdOeOxjyYdqspx-_4a8FVkKgZ3I4Y7pFWBu0GH4Ak4_MUKGdK5d6Xbda0D7xyogexK_mHMMt-EuPHl3RJJDyYcSFRwBMjS32y5jOariuNDE-RMG1N8IM48Gqd-mLzFVuI_k1aTPCaaBoVLzjZ5KQzPa3nPP46LwiCxH1nYyDgUUnhvyQ"
               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80';"
@@ -360,7 +360,7 @@
           <div class="p-6 flex flex-col flex-grow">
             <!-- Title -->
             <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-1">
-              Vanilla &amp; Berry Cake
+              Vanilla Berry Cake
             </h3>
             <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 flex-grow line-clamp-2">
               Pure Tahitian bean butter cake layered with crushed summer berry coulis and rosette cream.
@@ -373,7 +373,6 @@
               </div>
               <a href="${pageContext.request.contextPath}/menu" class="bg-primary text-background font-label-md text-label-md px-4 py-2.5 rounded-full font-medium hover:bg-secondary hover:text-background active:scale-[0.96] transition-all flex items-center gap-1.5 shadow-sm">
                 <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
-                <span>Add to Cart</span>
                 <span>Add to Cart</span>
               </a>
             </div>
@@ -411,13 +410,13 @@
           <!-- Right Content: Bespoke Booking Narrative & Checklist -->
           <div class="lg:col-span-6 order-1 lg:order-2">
             <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold mb-2 block">
-              Bespoke Culinary Commissions
+              Custom Cakes
             </span>
             <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight mb-6">
               A Cake as Unique as Your Celebration
             </h2>
             <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
-              Whether commemorating an intimate wedding, anniversary milestone, or grand gala, our master pâtissiers craft tailored multi-tiered edible centerpieces designed strictly to your aesthetic and palate.
+              From birthdays and weddings to anniversaries, we create custom cakes to match your special occasion and preferences.
             </p>
 
             <!-- Consultation Perks Checklist -->
@@ -427,8 +426,8 @@
                   <span class="material-symbols-outlined text-[16px]">check</span>
                 </div>
                 <div>
-                  <h4 class="font-label-lg text-label-lg font-semibold text-primary">Personalized Tasting Box</h4>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant">Sample 5 seasonal cake sponges and house-infused buttercream fillings delivered to your residence.</p>
+                  <h4 class="font-label-lg text-label-lg font-semibold text-primary">Cake Tasting Box</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Try five cake flavours and buttercream fillings before choosing your cake.</p>
                 </div>
               </div>
 
@@ -437,8 +436,8 @@
                   <span class="material-symbols-outlined text-[16px]">check</span>
                 </div>
                 <div>
-                  <h4 class="font-label-lg text-label-lg font-semibold text-primary">Hand-Sketched Moodboard</h4>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant">Direct one-on-one collaboration with our pastry director to match event floral palettes and dress textures.</p>
+                  <h4 class="font-label-lg text-label-lg font-semibold text-primary">Custom Cake Design</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Work with our team to choose a cake design that suits your event.</p>
                 </div>
               </div>
 
@@ -447,8 +446,8 @@
                   <span class="material-symbols-outlined text-[16px]">check</span>
                 </div>
                 <div>
-                  <h4 class="font-label-lg text-label-lg font-semibold text-primary">White-Glove Refrigerated Courier</h4>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant">Temperature-controlled dedicated delivery and on-site tiered assembly across the Western Province.</p>
+                  <h4 class="font-label-lg text-label-lg font-semibold text-primary">Cake Delivery</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">We deliver your cake across the Western Province.</p>
                 </div>
               </div>
             </div>
@@ -552,7 +551,7 @@
           </div>
           <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Freshly Baked Daily</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">
-            Handcrafted every single dawn before dawn breaks. Our ovens never re-heat yesterday's lamination.
+            We bake fresh every day using traditional methods.
           </p>
         </div>
 
@@ -561,9 +560,9 @@
           <div class="w-14 h-14 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary mb-6">
             <span class="material-symbols-outlined text-[28px]">workspace_premium</span>
           </div>
-          <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Made with Quality Ingredients</h3>
+          <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Quality Ingredients</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">
-            Pure Normandy AOP cultured butter, single-origin cacao, Madagascar bourbon vanilla, and unbleached grain.
+            We use carefully selected ingredients to make our products.
           </p>
         </div>
 
@@ -572,9 +571,9 @@
           <div class="w-14 h-14 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary mb-6">
             <span class="material-symbols-outlined text-[28px]">draw</span>
           </div>
-          <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Custom Designs for Every Occasion</h3>
+          <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Custom Cake Designs</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">
-            Bespoke tier architecture, hand-pressed edible florals, sugar lace, and tailored flavor journeys.
+            Choose a design and flavour for your special occasion.
           </p>
         </div>
 
@@ -583,9 +582,9 @@
           <div class="w-14 h-14 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary mb-6">
             <span class="material-symbols-outlined text-[28px]">shopping_bag</span>
           </div>
-          <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Convenient Online Ordering</h3>
+          <h3 class="font-headline-sm text-[20px] font-semibold text-primary mb-2">Easy Online Ordering</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">
-            Effortless scheduled dispatch date selection, real-time batch allocation, and secure instant LKR checkout.
+            Browse our products, place your order, and pay online.
           </p>
         </div>
       </div>
